@@ -8,7 +8,7 @@ function Landing(){
             <img src={back}  draggable="false"></img>
             
             <div className='content'>
-                <div className='empty-margin-top'></div>
+                <div className='emptymt'></div>
                 <h1 className='fst_title'>This is a heading</h1>
                 <div className='FancyTitle'>
                     <h1 className='fst_title'>about</h1>

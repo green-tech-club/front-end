@@ -34,28 +34,28 @@ function Navbar() {
         <ul>
             <li className={`li ${(pagenum===0)? "selected" : ""}`}>
             <Link to='/'>
-                <a href="#" >Home</a>
+                <a href="#" className={`a ${(pagenum===0)? "selected" : ""}`}>Home</a>
                 </Link>
             </li>
             <li className={`li ${(pagenum===1)? "selected" : ""}`}>
-                <a href="#">Paris Agreement</a>
+                <a href="#" className={`a ${(pagenum===1)? "selected" : ""}`}>Paris Agreement</a>
             </li>
             <li className={`li ${(pagenum===2)? "selected" : ""}`}>
-                <a href="#">Statistics</a>
+                <a href="#" className={`a ${(pagenum===2)? "selected" : ""}`}>Statistics</a>
             </li>
             <li className={`li ${(pagenum===3)? "selected" : ""}`}>
-                <a href="#">Financial Flow</a>
+                <a href="#" className={`a ${(pagenum===3)? "selected" : ""}`}>Financial Flow</a>
             </li>
             <li className={`li ${(pagenum===4)? "selected" : ""}`}>
               <Link to='/faq'>
-                <a href="#">Q&A</a>
+                <a href="#" className={`a ${(pagenum===4)? "selected" : ""}`}>Q&A</a>
               </Link>
             </li>
             <li className={`li ${(pagenum===5)? "selected" : ""}`}>
-                <a href="#">Donate</a>
+                <a href="#" className={`a ${(pagenum===5)? "selected" : ""}`}>Donate</a>
             </li>
             <li className={`li ${(pagenum===6)? "selected" : ""}`}>
-                <a href="#">Contact</a>
+                <a href="#" className={`a ${(pagenum===6)? "selected" : ""}`}>Contact</a>
             </li>
       </ul>
       <div className="login_but"> <p className="login_btn_text">Log in</p> </div>

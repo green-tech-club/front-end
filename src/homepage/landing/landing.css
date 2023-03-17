@@ -4,11 +4,12 @@
 }
 .content {
     padding-left: 10rem;
+    padding-top: 4rem;
     position: absolute;
     top: 0; left: 0; 
 }
-.empty-margin-top{
-  height: 8rem;
+.emptymt{
+  height: 7rem;
 }
 .fst_title{
   font-size: 72px;

@@ -70,8 +70,8 @@
     opacity: 1; /* set the scale to 1 on hover to show the shape */
   }
 
-  .navbar ul li a.selectedText{
-    font-weight: 500;
+  .navbar ul li a.selected{
+    font-weight: 600;
   }
   .navbar ul li.selected::after{
     position: absolute;
