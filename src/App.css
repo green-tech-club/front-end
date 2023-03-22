@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap');
 .App {
   text-align: center;
+  display: flex;
+  flex-direction:column ;
+  row-gap: 3rem;
 }
 
 .App-logo {
   height: 40vmin;
+  
   pointer-events: none;
 }
 
