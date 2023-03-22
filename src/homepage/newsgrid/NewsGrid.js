@@ -46,6 +46,14 @@ const newsData = [
     imageurl: 'https://images.unsplash.com/photo-1497211419994-14ae40a3c7a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     link: '#'
   }
+  ,
+  {
+    id: 7,
+    title: 'Lorem Sample',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    imageurl: 'https://images.unsplash.com/photo-1497211419994-14ae40a3c7a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    link: '#'
+  }
 ];
 
 
