@@ -6,7 +6,9 @@ import NewsGrid from './homepage/newsgrid/NewsGrid';
 
 
 
+
 function App() {
+  window.scrollTo(0, 0);
   return (
     <motion.div className="App"
     initial={{ opacity: 0 , x:20}}

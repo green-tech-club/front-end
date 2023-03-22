@@ -7,7 +7,7 @@ import {motion} from "framer-motion"
 import { renderMatches } from 'react-router-dom';
 
 function QAPage(){
-    
+    window.scrollTo(0, 0);
     return(
         <motion.div className="App"
         initial={{ opacity: 0 , x:20}}

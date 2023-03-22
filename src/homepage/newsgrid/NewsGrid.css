@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: space-between;
     vertical-align: middle;
+    margin-bottom: 2rem;
 }
 .news-container {
     display: grid;
@@ -74,6 +75,7 @@
     font-size: 36pt;
     margin-left: 10rem;
     margin-top: 0%;
+    margin-bottom: 0%;
     text-align: left;
     color: black;
   }
