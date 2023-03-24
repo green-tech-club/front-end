@@ -1,6 +1,7 @@
 .container {
     position: relative; 
-    overflow: hidden 
+    overflow: hidden ;
+  
 }
 .content {
     padding-left: 10rem;
