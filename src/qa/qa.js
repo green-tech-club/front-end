@@ -111,5 +111,6 @@ function QAPage(){
         <Navbar></Navbar>
         </motion.div>
     )
+
 }
 export default QAPage
