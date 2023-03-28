@@ -10,6 +10,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import QAPage from './qa/qa';
+import Dashboard from './logindashboard/Dashboard'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "faq",
     element: <QAPage/>,
+  },
+  {
+    path: "logindashboard",
+    element: <Dashboard/>,
   },
 ]);
 
