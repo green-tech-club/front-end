@@ -1,14 +1,36 @@
-import React from 'react';
-import './Dashboard.css';;
+import React, { Component } from 'react';
+import './Dashboard.css';
+import Sidebar from './sidebar/Sidebar';
+import Highcharts from 'highcharts';
 
-function Dashboard() {
+class Dashboard extends Component {
+  componentDidMount() {
+    Highcharts.chart('chart-container', {
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Sample Chart'
+      },
+      series: [{
+        data: [1, 2, 3, 4, 5]
+      }]
+    });
+  }
+
+  render() {
     return (
       <div className="dashboard">
-        <h1>Welcome to the Dashboard!</h1>
-        <p>This is where you can manage your app's settings and data.</p>
-        <button className="btn">Get started</button>
+        <Sidebar username={this.props.username} />
+        <div className="main-content">
+          <div id="chart-container"></div>
+        </div>
+        <div className="logout">
+          <button>Logout</button>
+        </div>
       </div>
     );
   }
+}
 
   export default Dashboard;

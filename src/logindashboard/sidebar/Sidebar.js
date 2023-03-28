@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Sidebar() {
-    return (
+const username = "Hungary"
+const Sidebar = ({ username }) => {
+  return (
+    <div className="sidebar">
+      <div className="user-info">
+        <h2>{username}</h2>
+      </div>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/settings">Settings</Link>
-        </li>
+        <li>Dashboard</li>
+        <li>Settings</li>
       </ul>
-    );
-  }
+    </div>
+  );
+};
+
   export default Sidebar;
