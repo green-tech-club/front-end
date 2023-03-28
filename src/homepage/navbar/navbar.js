@@ -8,7 +8,7 @@ function Navbar() {
   
   var pagePath = window.location.pathname;
   if(pagePath==="/faq") pagenum=4;
-  console.log(pagenum)
+  //console.log(pagenum)
 
   useEffect(() => {
     const handleScroll = () => {
