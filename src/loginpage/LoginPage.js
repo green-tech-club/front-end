@@ -83,7 +83,11 @@ function LoginPage() {
                     <Link to='/'>
                         <img id="return-btn" src={return_btn}/>
                     </Link>
-                    <h1 id="welcome-text">Welcome</h1>
+                    <div className="welcome-section">
+                        <h1 id="welcome-text">Welcome back!</h1>
+                        <h3 id="subwelcome-text" >Please enter your details</h3>
+                        <div className='line'></div>
+                    </div>
                     <form id="actual-form">
                         <div className="login-field">
                             <label htmlFor="username" className="label-login">Username</label>
@@ -105,10 +109,22 @@ function LoginPage() {
                                    onChange={handleChange}
                             />
                         </div>
+                        <div className="remember-me" >
+                            <div className="remember-me">
+                                <input type="checkbox" className="remember-me-field"></input>
+                                <p className="remember-me-text">Remember me</p>
+                            </div>
+                            <p className="forgot-pass">Forgot password</p>
+                        </div>
                         <div className="login-field" id="btn-field">
                             <button type="submit" className="btn-login">Login</button>
-                            <button id="btn-dir-to-sign-up" className="btn-login">Sign up</button>
+                            {//<button id="btn-dir-to-sign-up" className="btn-login">Sign up</button>}
+                            }  
+                            <div className="sign-up-text">
+                                <p className="remember-me-text">Don't have an account?</p> <p className="forgot-pass">Sign up</p>
+                            </div>
                         </div>
+                            
                     </form>
                 </div>
             </div>
