@@ -58,7 +58,9 @@ function Navbar() {
                 <a href="#" className={`a ${(pagenum===6)? "selected" : ""}`}>Contact</a>
             </li>
       </ul>
-      <div className="login_but"> <p className="login_btn_text">Log in</p> </div>
+        <Link to='/login'>
+            <div className="login_but"> <p className="login_btn_text">Log in</p> </div>
+        </Link>
     </nav>
   );
 }

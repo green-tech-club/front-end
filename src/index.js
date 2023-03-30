@@ -11,6 +11,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import QAPage from './qa/qa';
 import Dashboard from './logindashboard/Dashboard'
+import LoginPage from "./loginpage/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +27,13 @@ const router = createBrowserRouter([
     element: <QAPage/>,
   },
   {
-    path: "logindashboard",
+    path: "dashboard",
     element: <Dashboard/>,
   },
+  {
+    path: "login",
+    element: <LoginPage/>,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

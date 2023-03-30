@@ -41,18 +41,23 @@ function Dashboard() {
   };
 
   return (
-    <motion.div>
+    <motion.div className="DashboardMain"
+    initial={{ opacity: 0 , x:20}}
+    animate={{ opacity: 1 , x:0 }}
+    transition={{ ease: "easeOut", duration: 0.5 }}>
+
       <div className="top-bar">
-    <div className="logout_but"> <p className="logout_btn_text">Log out</p> </div>
-    </div>
+        <div className="logout_but"> <p className="logout_btn_text">Log out</p> </div>
+      </div>
+
+      <div className='DashboardDivider'>
+        <Sidebar />
+        <div className="maincontent">
+          <h1>Dashboard</h1>
+          <ChartComponent className="chart" type="line" data={chartData} options={chartOptions} />
+        </div>
         
-    <div className="content">
-      <h1>Dashboard</h1>
-      <ChartComponent type="line" data={chartData} options={chartOptions} />
-    </div>
-    
-    <Sidebar />
-    
+      </div>
     </motion.div>
     
   );
