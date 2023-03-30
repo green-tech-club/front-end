@@ -120,9 +120,7 @@ function LoginPage() {
                             <button type="submit" className="btn-login">Login</button>
                             {//<button id="btn-dir-to-sign-up" className="btn-login">Sign up</button>}
                             }  
-                            <div className="sign-up-text">
-                                <p className="remember-me-text">Don't have an account?</p> <p className="forgot-pass">Sign up</p>
-                            </div>
+                            
                         </div>
                             
                     </form>
