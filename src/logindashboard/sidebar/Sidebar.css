@@ -1,0 +1,38 @@
+.sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 11%;
+    background-color: #00B088; /* Updated color */
+    color: #fff; /* Added white text color */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-info h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    font-size: 16pt;
+    font-family: 'Outfit',sans-serif;
+    font-weight: normal;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
