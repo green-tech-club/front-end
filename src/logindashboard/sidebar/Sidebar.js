@@ -9,9 +9,9 @@ const Sidebar = ({ username }) => {
       <div className="user-info">
         <h2>{username}</h2>
       </div>
-      <ul>
-        <li>Dashboard</li>
-        <li>Settings</li>
+      <ul className='side-element'>
+        <li className='side-element-li'>Dashboard</li>
+        <li className='side-element-li'>Settings</li>
       </ul>
     </div>
   );
