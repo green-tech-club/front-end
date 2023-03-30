@@ -22,13 +22,13 @@
     margin-left: 10px;
   }
   
-  ul {
+  .side-element {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
   
-  li {
+  .side-element-li {
     font-size: 16pt;
     font-family: 'Outfit',sans-serif;
     font-weight: normal;
