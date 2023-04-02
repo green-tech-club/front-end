@@ -105,7 +105,7 @@ function LoginPage() {
                     <form id="actual-form" onSubmit={handleSubmit}>
                         <div className="login-field">
                             <label htmlFor="email" className="label-login">Email</label>
-                            <input type="text"
+                            <input 
                                    id="email"
                                    name="email"
                                    type="email"
@@ -120,7 +120,6 @@ function LoginPage() {
                             <input type="password"
                                    id="password"
                                    name="password"
-                                   type="password"
                                    placeholder="Password"
                                    className="input-login"
                                    onChange={handleChange}

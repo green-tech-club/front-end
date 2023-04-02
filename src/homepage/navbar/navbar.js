@@ -59,11 +59,11 @@ function Navbar() {
                 <a href="#" className={`a ${(pagenum===6)? "selected" : ""}`}>Contact</a>
             </li>
       </ul>
-        <Link to={localStorage.getItem("access_token") ? '/dashboard' : '/login'}>
+        <Link to={localStorage.getItem("access_token") ? '/dashboard' : '/login'} className="login-btn">
             {!localStorage.getItem("access_token") &&
-                <div className="login_but"> <p className="login_btn_text">Log in</p> </div>}
+                <GreenButton name="Log in" size="small"></GreenButton>}
             {localStorage.getItem("access_token") &&
-                <div className="login_but"> <p className="login_btn_text">Profile</p> </div>}
+                <GreenButton name="Profile" size="small"></GreenButton>}
         </Link>
     </nav>
   );
