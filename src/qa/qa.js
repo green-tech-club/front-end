@@ -6,6 +6,8 @@ import back from'./backqa.png'
 import {motion} from "framer-motion"
 import emailjs from 'emailjs-com';
 import { renderMatches } from 'react-router-dom';
+import TextTitle from '../stylingComponents/Texts/Title';
+import TextP from '../stylingComponents/Texts/Paragraph';
 
 
 function QAPage(){
@@ -38,8 +40,13 @@ function QAPage(){
             <img src={back} alt="background" draggable="false"></img>
             <div className='content'>
                 <div className='empty-margin-top'></div>
-                <h1 className='FAQTitle'>Frequently Asked Questions</h1>
-                <p className='FAQSubtitle'>You can find some questions with some answers</p>     
+                <div className='FAQTitle'>
+                    <TextTitle name="Frequently Asked Questions" colour= "white"></TextTitle>
+                </div>
+                <div className='FAQSubtitle'>
+                <TextP name="You can find some questions with some answers" colour='white'>
+                </TextP> 
+                </div>
             </div>   
             <div className='QuestionsRow'>
                 <div className='Question'>

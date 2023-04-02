@@ -1,0 +1,4 @@
+.hor-div{
+    display: flex;
+    flex-direction: row;
+}

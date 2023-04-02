@@ -2,6 +2,8 @@ import React from 'react';
 import './landing.css';
 import back from './back.png'
 import highlighter from './highlight.png'
+import GreenButton from '../../stylingComponents/buttons/greenButton';
+import TextP from '../../stylingComponents/Texts/Paragraph';
 function Landing(){
     return(
         <div className='container'>
@@ -14,8 +16,9 @@ function Landing(){
                     <h1 className='fst_title'>about</h1>
                     <img src={highlighter} className='Highlighter'></img>
                 </div>
-                <p className='subtitle'>Lorem ipsum dolor sit amet consectetur. Gravida sed <br></br>tellus condimentum et est eu nunc.</p>
-                <div className="CTO_btn"> <p className="CTO_btn_text">Some call to action text</p> </div>
+                <div className='subtitle'><TextP colour='white' name="Lorem ipsum dolor sit amet consectetur.<br> Gravida sed tellus condimentum et est eu nunc."></TextP></div>
+                <div className='CTO-btn'><GreenButton size='large' name='Some call to action text'></GreenButton></div>
+                
             </div>
             
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import "./navbar.css";
 import { Link } from 'react-router-dom'
+import GreenButton from "../../stylingComponents/buttons/greenButton";
 function Navbar() {
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,8 +59,8 @@ function Navbar() {
                 <a href="#" className={`a ${(pagenum===6)? "selected" : ""}`}>Contact</a>
             </li>
       </ul>
-        <Link to='/login'>
-            <div className="login_but"> <p className="login_btn_text">Log in</p> </div>
+        <Link to='/login'  className="login-btn">
+            <GreenButton name="Log in" size="small"></GreenButton>
         </Link>
     </nav>
   );

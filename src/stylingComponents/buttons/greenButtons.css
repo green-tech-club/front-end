@@ -1,0 +1,51 @@
+.green-btn {
+    display: flex;
+    width: fit-content;
+    min-width: 7rem;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0.7rem;
+    padding-top: 0.6rem;
+    border-radius: 10px;
+    background-color: #00B088;
+  }
+
+.green-btn:hover {
+    
+    background-color: #029270;
+    transition: 0.3s ease-in-out;
+  }
+
+.green-btn-text-small{
+    color: #fff;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: fit-content;
+    margin: 0%;
+    font-family: 'Outfit' ,sans-serif;
+    font-size: 16pt;
+    font-weight: 500;
+  }
+
+.green-btn-text-medium{
+    color: #fff;
+    width: fit-content;
+    margin: 0%;
+    font-family: 'Outfit' ,sans-serif;
+    font-size: 18pt;
+    font-weight: 500;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+.green-btn-text-large{
+    color: #fff;
+    margin: 0%;
+    font-family: 'Outfit' ,sans-serif;
+    font-size: 22pt;
+    width: fit-content;
+    font-weight: 500;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+

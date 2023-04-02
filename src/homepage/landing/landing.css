@@ -39,32 +39,7 @@
   margin-top: -1rem;
   color: white;
 }
-.CTO_btn {
+.CTO-btn {
   position: flex-end;
   margin-top: 3rem;
-  width: fit-content;
-  padding-top: 0.8rem;
-  padding-bottom: 1rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  border-radius: 10px;
-  background-color: #00B088;
 }
-
-.CTO_btn:hover {
-  
-  background-color: #029270;
-  transition: 0.3s ease-in-out;
-}
-
-.CTO_btn_text{
-  color: #fff;
-  font-size: medium;
-  text-align: left;
-  width: fit-content;
-  margin:0%;
-  font-family: 'Outfit' ,sans-serif;
-  font-size: 20pt;
-  font-weight: 500;
-}
-  
