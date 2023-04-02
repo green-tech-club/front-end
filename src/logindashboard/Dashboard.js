@@ -11,7 +11,7 @@ function Dashboard() {
   function handleLogout() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('private_key');
-    navigate('/');
+    navigate('/login');
   }
 
   const chartData = {
@@ -47,7 +47,7 @@ function Dashboard() {
     transition={{ ease: "easeOut", duration: 0.5 }}>
 
       <div className="top-bar">
-        <div className="logout_but"> <p className="logout_btn_text">Log out</p> </div>
+        <div className="logout_but" onClick={handleLogout}> <p className="logout_btn_text">Log out</p> </div>
       </div>
 
       <div className='DashboardDivider'>

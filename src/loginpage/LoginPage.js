@@ -6,13 +6,22 @@ import {Link, useNavigate} from "react-router-dom";
 
 function LoginPage() {
     const [formData, setFormData] = React.useState({
-        username: "",
+        email: "",
         password: "",
+        rememberMe: false
     })
     const navigate = useNavigate()
 
     //handle change in input fields
     function handleChange(event) {
+        if(event.target.type === "checkbox")
+        {
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                rememberMe: event.target.checked
+            }))
+            return
+        }
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
@@ -22,9 +31,18 @@ function LoginPage() {
 
     //do not allow user to access login page if they are already logged in
     useEffect(()=>{
-        if(sessionStorage.getItem("token") !== null)
+        if(localStorage.getItem("access_token") !== null)
         {
             navigate('/')
+        }
+        if(localStorage.getItem("email") !== null)
+        {
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                email: localStorage.getItem("email"),
+                password: undefined,
+                rememberMe: true
+            }))
         }
     },[1])
 
@@ -40,43 +58,39 @@ function LoginPage() {
             for(let t = Date.now(); Date.now() - t <= ms;);
         }
 
-        let url = "url place holder"
+        let url = "http://localhost:8080/login"
 
         fetch(url, requestOptions)
             .then(res => res.json())
             .then(data => {
-                if(data.state === "placeholder") {
+                if(data.access_token === "placeholder") {
                     loginSuccess(data)
                     navigate('/dashboard')
                 }
                 //Error handling
                 else{
-                    /*
-                      if(data.state === "placeholder"){
-                        toast.error('Wrong password!', {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    })
-                    */
+                    console.log(data)
                 }
             })
     }
     function loginSuccess(data){
-        sessionStorage.setItem("token", data.placeholder)
-        sessionStorage.setItem("private_key", data.placeholder)
+        //save email to local storage if remember me is checked
+        if(formData.rememberMe === true){
+            localStorage.setItem("email", formData.email)
+        }
+        else{
+            localStorage.removeItem("email")
+        }
+        sessionStorage.setItem("access_token", data.access_token)
+        navigate('/dashboard')
     }
 
     return (
         <motion.div id="login-page"
-             className="page"
-             initial={{opacity: 0}}
-             animate={{opacity: 1}}
-             transition={{duration: 0.8}}
+                    className="page"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 0.8}}
         >
             <div id="login-container">
                 <div id="login-form">
@@ -88,15 +102,17 @@ function LoginPage() {
                         <h3 id="subwelcome-text" >Please enter your details</h3>
                         <div className='line'></div>
                     </div>
-                    <form id="actual-form">
+                    <form id="actual-form" onSubmit={handleSubmit}>
                         <div className="login-field">
-                            <label htmlFor="username" className="label-login">Username</label>
+                            <label htmlFor="email" className="label-login">Email</label>
                             <input type="text"
-                                   id="username"
-                                   name="username"
-                                   placeholder="Username"
+                                   id="email"
+                                   name="email"
+                                   type="email"
+                                   placeholder="Email"
                                    className="input-login"
                                    onChange={handleChange}
+                                   value={formData.email}
                             />
                         </div>
                         <div className="login-field">
@@ -104,14 +120,16 @@ function LoginPage() {
                             <input type="password"
                                    id="password"
                                    name="password"
+                                   type="password"
                                    placeholder="Password"
                                    className="input-login"
                                    onChange={handleChange}
+                                   value={formData.password}
                             />
                         </div>
                         <div className="remember-me" >
                             <div className="remember-me">
-                                <input type="checkbox" className="remember-me-field"></input>
+                                <input type="checkbox" name="rememberMe" className="remember-me-field" onChange={handleChange} checked={formData.rememberMe}></input>
                                 <p className="remember-me-text">Remember me</p>
                             </div>
                             <p className="forgot-pass">Forgot password</p>
@@ -119,12 +137,10 @@ function LoginPage() {
                         <div className="login-field" id="btn-field">
                             <button type="submit" className="btn-login">Login</button>
                             {//<button id="btn-dir-to-sign-up" className="btn-login">Sign up</button>}
-                            }  
-                            <div className="sign-up-text">
-                                <p className="remember-me-text">Don't have an account?</p> <p className="forgot-pass">Sign up</p>
-                            </div>
+                            }
+
                         </div>
-                            
+
                     </form>
                 </div>
             </div>
