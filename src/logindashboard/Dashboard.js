@@ -9,7 +9,7 @@ import { motion } from "framer-motion"
 function Dashboard() {
   const navigate = useNavigate();
   function handleLogout() {
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('access_token');
     sessionStorage.removeItem('private_key');
     navigate('/login');
   }
