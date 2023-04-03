@@ -4,6 +4,9 @@ import '../App.css';
 import './donate.css';
 import {motion} from "framer-motion";
 import back from'./backdonate.jpg'
+import TextTitle from '../stylingComponents/Texts/Title';
+import TextP from '../stylingComponents/Texts/Paragraph';
+import HorDiv from '../stylingComponents/divs/EasyDivs';
 
 
 
@@ -47,42 +50,60 @@ function DonatePage() {
         initial={{ opacity: 0 , x:20}}
         animate={{ opacity: 1 , x:0 }}
         transition={{ ease: "easeOut", duration: 0.5 }}>
-          <img src={back} draggable="false"
-           initial={{ opacity: 0 , x:20}}
-           animate={{ opacity: 1 , x:0 }}
-           transition={{ ease: "easeOut", duration: 0.5 }}
-           style={{
-            backgroundPosition: 'center',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            width: '100%',
-            height: '100%',
-          }}></img>
-        <div className='content'>
-                <div className='empty-margin-top'></div>
-                <h1 className='DoanteTitle'>Donation Page</h1>
-                <p className='FAQSubtitle'>You can find some questions with some answers</p>     
+          <img src={back} className="backimgfordonate" ></img>
+          <div className='horidiv'>
+          <div className='donate-content'>
+                <div className='donate-empty-margin-top'></div>
+                <TextTitle name='Donate now' colour='white'></TextTitle>
+                <TextP name='Asalamu alaykom wa alaykum salam' colour='white'></TextP>
+                <div className='donate-desc'>
+                <TextP name='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br><br>
+                1- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
+                2- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
+                3- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
+                4- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>'
+                colour='white'
+                fontsize='12pt'>
+                </TextP>
+                </div>
             </div> 
-              
-        <div className="payment-form" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-          
-          <div className="BubblyInput">
-          <form onSubmit={handleSubmit}>
 
-          
-          <input type="text" id="name"  style={{  position: 'relative',marginBottom: '10px' ,marginBottom: '10px' ,backgroundColor: 'rgba(241, 241, 241, 0.8)' ,borderRadius: '5px'}} placeholder="Full Name on card" value={name} onChange={(e) => setName(e.target.value)} required /> 
-
-          <input type="text" id="cardNumber"  pattern="[0-9]*" inputMode="numeric" autoComplete="cc-number" style={{ position: 'relative',marginBottom: '10px' ,marginBottom: '10px' ,backgroundColor: 'rgba(241, 241, 241, 0.8)' ,borderRadius: '5px'}} placeholder="Card Number" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} required />
-
-          <input type="date" id="expiration" style={{ position: 'relative',marginBottom: '10px' ,marginBottom: '10px' ,backgroundColor: 'rgba(241, 241, 241, 0.8)' ,borderRadius: '5px'}} placeholder="Expiration date" value={expiration} onChange={(e) => setExpiration(e.target.value)} required />
-
-          <input type="text" id="cvv" style={{ position: 'relative', marginBottom: '10px',width: '50px' ,marginBottom: '10px' ,backgroundColor: 'rgba(241, 241, 241, 0.8)' ,borderRadius: '5px'}} placeholder="CVV" value={cvv} onChange={(e) => setCvv(e.target.value)} required />
-
-          <button className="BubblyButton" type="submit">Submit Payment</button>
-          </form>
-          </div>
-        </div>
         
+            <div id="donate-container">
+                <div id="donate-form">
+                    <div className="welcome-section">
+                        <h1 id="welcome-text">Welcome back!</h1>
+                        <h3 id="subwelcome-text" >Please enter your details</h3>
+                        <div className='line'></div>
+                    </div>
+                    <form id="donate-actual-form" >
+                        <div className="donate-field">
+                            <label htmlFor="email" className="label-login">Email</label>
+                            <input 
+                                   id="email"
+                                   name="email"
+                                   type="email"
+                                   placeholder="Email"
+                                   className="input-login"
+                            />
+                        </div>
+                        <div className="login-field">
+                            <label htmlFor="password" className="label-login">Password</label>
+                            <input type="password"
+                                   id="password"
+                                   name="password"
+                                   placeholder="Password"
+                                   className="input-login"
+                            />
+                        </div>
+                        
+                        <div className="login-field" id="btn-field">
+                            <button type="submit" className="btn-login">Login</button>    
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
         <Navbar></Navbar>
         </motion.div>
         
