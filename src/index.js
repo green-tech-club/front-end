@@ -12,7 +12,7 @@ import reportWebVitals from './reportWebVitals';
 import QAPage from './qa/qa';
 import Dashboard from './logindashboard/Dashboard'
 import LoginPage from "./loginpage/LoginPage";
-
+import DonatePage from './donatepage/donate';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <LoginPage/>,
+  },
+  {
+    path: "donate",
+    element: <DonatePage/>,
   }
 ]);
 

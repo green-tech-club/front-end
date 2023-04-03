@@ -9,6 +9,7 @@ function Navbar() {
   
   var pagePath = window.location.pathname;
   if(pagePath==="/faq") pagenum=4;
+  if(pagePath==="/donate") pagenum=5;
   //console.log(pagenum)
 
   useEffect(() => {
@@ -53,7 +54,9 @@ function Navbar() {
               </Link>
             </li>
             <li className={`li ${(pagenum===5)? "selected" : ""}`}>
+              <Link to='/donate'>
                 <a href="#" className={`a ${(pagenum===5)? "selected" : ""}`}>Donate</a>
+              </Link>
             </li>
             <li className={`li ${(pagenum===6)? "selected" : ""}`}>
                 <a href="#" className={`a ${(pagenum===6)? "selected" : ""}`}>Contact</a>
