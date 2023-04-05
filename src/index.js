@@ -13,6 +13,7 @@ import QAPage from './qa/qa';
 import Dashboard from './logindashboard/Dashboard'
 import LoginPage from "./loginpage/LoginPage";
 import DonatePage from './donatepage/donate';
+import SignUpPage from "./signuppage/SignUpPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <LoginPage/>,
+  },
+  {
+    path: "signup",
+    element: <SignUpPage/>,
   },
   {
     path: "donate",

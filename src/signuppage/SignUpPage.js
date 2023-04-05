@@ -1,24 +1,21 @@
 import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
-import "./LoginPage.css";
-import return_btn from './return.png';
+import "../loginpage/LoginPage.css";
+import return_btn from '../loginpage/return.png';
 import {Link, useNavigate} from "react-router-dom";
+import "./SignUpPage.css";
 
-function LoginPage() {
+function SignUpPage() {
     const [formData, setFormData] = React.useState({
+        name: "",
         username: "",
         password: "",
+        repeatPassword: "",
     })
-    const [rememberMe, setRememberMe] = React.useState(false)
     const navigate = useNavigate()
 
     //handle change in input fields
     function handleChange(event) {
-        console.log(event.target.type)
-        if(event.target.type === "checkbox")
-        {
-            setRememberMe(!rememberMe)
-        }
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
@@ -32,59 +29,41 @@ function LoginPage() {
         {
             navigate('/')
         }
-        if(localStorage.getItem("email") !== null)
-        {
-            setFormData(prevFormData => ({
-                ...prevFormData,
-                username: localStorage.getItem("email"),
-                password: undefined,
-            }))
-            setRememberMe(true)
-        }
     },[1])
 
     function handleSubmit(event) {
         event.preventDefault()
 
-        const tempForm = new URLSearchParams();
-        tempForm.append('username', formData.username);
-        tempForm.append('password', formData.password);
-        tempForm.append('grant_type', 'password');
-
+        if (formData.password !== formData.repeatPassword) {
+            alert("Passwords do not match!")
+            return
+        }
 
         const requestOptions = {
             method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded' },
-            body: tempForm
+            headers: {'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
         };
 
         function sleep(ms){
             for(let t = Date.now(); Date.now() - t <= ms;);
         }
 
-        let url = "http://gt.ochawork.shop/login"
+        let url = "http://gt.ochawork.shop/signup"
 
         fetch(url, requestOptions)
             .then(res => res.json())
             .then(data => {
                 loginSuccess(data)
+                alert("Sign up successful! Please log in.")
             })
             .catch(error => {
-                console.log(error)
-            }
-        )
+                    console.log(error)
+                }
+            )
     }
     function loginSuccess(data){
-        //save email to local storage if remember me is checked
-        if(rememberMe === true){
-            localStorage.setItem("email", formData.username)
-        }
-        else{
-            localStorage.removeItem("email")
-        }
-        sessionStorage.setItem("access_token", data.access_token)
-        alert("Login successful! Redirecting to dashboard...")
-        navigate('/dashboard')
+        navigate('/login')
     }
 
     return (
@@ -94,27 +73,39 @@ function LoginPage() {
                     animate={{opacity: 1}}
                     transition={{duration: 0.8}}
         >
-            <div id="login-container" className="login-container">
-                <div id="login-form" className="login-form">
+            <div id="sign-up-container" className="login-container">
+                <div id="sign-up-form" className="login-form">
                     <Link to='/'>
                         <img id="return-btn" src={return_btn}/>
                     </Link>
-                    <div className="welcome-section">
+                    <div className="welcome-section" id="sign-up-welcome-section">
                         <h1 id="welcome-text">Welcome back!</h1>
                         <h3 id="subwelcome-text" >Please enter your details</h3>
                         <div className='line'></div>
                     </div>
-                    <form id="actual-form" onSubmit={handleSubmit}>
+                    <form id="actual-sign-up-form" onSubmit={handleSubmit}>
+                        <div className="login-field">
+                            <label htmlFor="name" className="label-login">Name</label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="name"
+                                placeholder="Name"
+                                className="input-login"
+                                onChange={handleChange}
+                                value={formData.name}
+                            />
+                        </div>
                         <div className="login-field">
                             <label htmlFor="email" className="label-login">Email</label>
-                            <input 
-                                   id="email"
-                                   name="username"
-                                   type="email"
-                                   placeholder="Email"
-                                   className="input-login"
-                                   onChange={handleChange}
-                                   value={formData.username}
+                            <input
+                                id="email"
+                                name="username"
+                                type="email"
+                                placeholder="Email"
+                                className="input-login"
+                                onChange={handleChange}
+                                value={formData.username}
                             />
                         </div>
                         <div className="login-field">
@@ -128,22 +119,23 @@ function LoginPage() {
                                    value={formData.password}
                             />
                         </div>
-                        <div className="remember-me" >
-                            <div className="remember-me">
-                                <input type="checkbox" name="rememberMe" className="remember-me-field" onChange={handleChange} checked={formData.rememberMe}></input>
-                                <p className="remember-me-text">Remember me</p>
-                            </div>
-                            <p className="forgot-pass">Forgot password</p>
+                        <div className="login-field">
+                            <label htmlFor="password" className="label-login">Repeat Password</label>
+                            <input type="password"
+                                   id="repeat-password"
+                                   name="repeatPassword"
+                                   placeholder="Repeat Password"
+                                   className="input-login"
+                                   onChange={handleChange}
+                                   value={formData.repeatPassword}
+                            />
                         </div>
                         <div className="login-field" id="btn-field">
-                            <button type="submit" className="btn-login">Login</button>
+                            <button type="submit" className="btn-login">Sign up</button>
                             {//<button id="btn-dir-to-sign-up" className="btn-login">Sign up</button>}
                             }
                             <div className="sign-up-text">
-                                <p className="remember-me-text">Don't have an account?</p>
-                                <Link to='/signup'>
-                                    <p className="forgot-pass">Sign up</p>
-                                </Link>
+                                <p className="remember-me-text">Already have an account?</p> <p className="forgot-pass">Login</p>
                             </div>
                         </div>
                     </form>
@@ -153,4 +145,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default SignUpPage;
