@@ -6,21 +6,18 @@ import {Link, useNavigate} from "react-router-dom";
 
 function LoginPage() {
     const [formData, setFormData] = React.useState({
-        email: "",
+        username: "",
         password: "",
-        rememberMe: false
     })
+    const [rememberMe, setRememberMe] = React.useState(false)
     const navigate = useNavigate()
 
     //handle change in input fields
     function handleChange(event) {
+        console.log(event.target.type)
         if(event.target.type === "checkbox")
         {
-            setFormData(prevFormData => ({
-                ...prevFormData,
-                rememberMe: event.target.checked
-            }))
-            return
+            setRememberMe(!rememberMe)
         }
         const {name, value} = event.target
         setFormData(prevFormData => ({
@@ -39,44 +36,48 @@ function LoginPage() {
         {
             setFormData(prevFormData => ({
                 ...prevFormData,
-                email: localStorage.getItem("email"),
+                username: localStorage.getItem("email"),
                 password: undefined,
-                rememberMe: true
             }))
+            setRememberMe(true)
         }
     },[1])
 
     function handleSubmit(event) {
         event.preventDefault()
+
+        const tempForm = new URLSearchParams();
+        tempForm.append('username', formData.username);
+        tempForm.append('password', formData.password);
+        tempForm.append('grant_type', 'password');
+
+
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            headers: {'Content-Type': 'application/x-www-form-urlencoded' },
+            body: tempForm
         };
 
         function sleep(ms){
             for(let t = Date.now(); Date.now() - t <= ms;);
         }
 
-        let url = "http://localhost:8080/login"
+        let url = "http://gt.ochawork.shop/login"
 
         fetch(url, requestOptions)
             .then(res => res.json())
             .then(data => {
-                if(data.access_token === "placeholder") {
-                    loginSuccess(data)
-                    navigate('/dashboard')
-                }
-                //Error handling
-                else{
-                    console.log(data)
-                }
+                loginSuccess(data)
             })
+            .catch(error => {
+                console.log(error)
+            }
+        )
     }
     function loginSuccess(data){
         //save email to local storage if remember me is checked
-        if(formData.rememberMe === true){
-            localStorage.setItem("email", formData.email)
+        if(rememberMe === true){
+            localStorage.setItem("email", formData.username)
         }
         else{
             localStorage.removeItem("email")
@@ -107,12 +108,12 @@ function LoginPage() {
                             <label htmlFor="email" className="label-login">Email</label>
                             <input 
                                    id="email"
-                                   name="email"
+                                   name="username"
                                    type="email"
                                    placeholder="Email"
                                    className="input-login"
                                    onChange={handleChange}
-                                   value={formData.email}
+                                   value={formData.username}
                             />
                         </div>
                         <div className="login-field">
