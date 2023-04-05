@@ -8,14 +8,18 @@ import "./SignUpPage.css";
 function SignUpPage() {
     const [formData, setFormData] = React.useState({
         name: "",
-        username: "",
+        email: "",
         password: "",
-        repeatPassword: "",
     })
+    const [repeatPassword, setRepeatPassword] = React.useState("")
     const navigate = useNavigate()
 
     //handle change in input fields
     function handleChange(event) {
+        if(event.target.name==="repeatPassword")
+        {
+            setRepeatPassword(event.target.value)
+        }
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
@@ -34,7 +38,7 @@ function SignUpPage() {
     function handleSubmit(event) {
         event.preventDefault()
 
-        if (formData.password !== formData.repeatPassword) {
+        if (formData.password !== repeatPassword) {
             alert("Passwords do not match!")
             return
         }
@@ -54,6 +58,12 @@ function SignUpPage() {
         fetch(url, requestOptions)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
+                if(data.detail !== undefined)
+                {
+                    alert(data.detail)
+                    return
+                }
                 loginSuccess(data)
                 alert("Sign up successful! Please log in.")
             })
@@ -100,7 +110,7 @@ function SignUpPage() {
                             <label htmlFor="email" className="label-login">Email</label>
                             <input
                                 id="email"
-                                name="username"
+                                name="email"
                                 type="email"
                                 placeholder="Email"
                                 className="input-login"
@@ -127,7 +137,7 @@ function SignUpPage() {
                                    placeholder="Repeat Password"
                                    className="input-login"
                                    onChange={handleChange}
-                                   value={formData.repeatPassword}
+                                   value={repeatPassword}
                             />
                         </div>
                         <div className="login-field" id="btn-field">

@@ -67,6 +67,11 @@ function LoginPage() {
         fetch(url, requestOptions)
             .then(res => res.json())
             .then(data => {
+                if(data.detail !== undefined)
+                {
+                    alert(data.detail)
+                    return
+                }
                 loginSuccess(data)
             })
             .catch(error => {
