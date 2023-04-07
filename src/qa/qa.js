@@ -37,7 +37,7 @@ function QAPage(){
         initial={{ opacity: 0 , x:20}}
         animate={{ opacity: 1 , x:0 }}
         transition={{ ease: "easeOut", duration: 0.5 }}>
-        <div className='container'>
+        <div className='qacontainer'>
             <img src={back} alt="background" draggable="false"></img>
             <div className='content'>
                 <div className='empty-margin-top'></div>
