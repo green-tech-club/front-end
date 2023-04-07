@@ -8,6 +8,7 @@ import emailjs from 'emailjs-com';
 import { renderMatches } from 'react-router-dom';
 import TextTitle from '../stylingComponents/Texts/Title';
 import TextP from '../stylingComponents/Texts/Paragraph';
+import GreenButton from '../stylingComponents/buttons/greenButton';
 
 
 function QAPage(){
@@ -36,7 +37,7 @@ function QAPage(){
         initial={{ opacity: 0 , x:20}}
         animate={{ opacity: 1 , x:0 }}
         transition={{ ease: "easeOut", duration: 0.5 }}>
-        <div className='container'>
+        <div className='qacontainer'>
             <img src={back} alt="background" draggable="false"></img>
             <div className='content'>
                 <div className='empty-margin-top'></div>
@@ -94,28 +95,36 @@ function QAPage(){
                 </div>
             </div>
 
-
-            <div>
-            <button onClick={() => setShowPopup(true)}>Ask a Question</button>
+            <div className='button-div'>
+            <button  className='green-btn' onClick={() => setShowPopup(true)}><h className='green-btn-text-small'>Ask a Question</h></button>
                {showPopup &&
                  <div id="overlay" className="show">
                  <div id = "popup">
-                    <h2>Ask a Question</h2>
+                    <div id='pop-inside'>
+                    <button className='close-button' onClick={() => setShowPopup(false)}><h>x</h></button>
+                    <p className='title'>Ask a Question</p>
+                    <div className='line'></div>
                     <form onSubmit={handleSubmit}>
-                      <label htmlFor="name">Name:</label>
-                      <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-                      <label htmlFor="email">Email:</label>
-                      <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                      <label htmlFor="question">Question:</label>
-                       <textarea id="question" value={question} onChange={(e) => setQuestion(e.target.value)} required></textarea>
-                       <button type="submit">Submit</button>
-                   </form>
-                </div>
+                      <label className='paragraph' htmlFor="name">Name :    </label>
+                      <div className='form-intlabel'></div>
+                      <input className='form-input' placeholder='Name' type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                      <div className='form-intdiv'></div>
+                      <label className='paragraph' htmlFor="email">Email :    </label>
+                      <div className='form-intlabel'></div>
+                      <input className='form-input' placeholder='Email' type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <div className='form-intdiv'></div>
+                      <label className='paragraph' htmlFor="question">Question :    </label>
+                      <div className='form-intlabel'></div>
+                       <textarea placeholder='Enter your question here please' className='form-question' id="question" value={question} onChange={(e) => setQuestion(e.target.value)} required></textarea>
+                       <button className='green-btn' type="submit"><h1 className='green-btn-text-small'>Submit</h1></button>
+                     </form>
+                     </div>
+                </div>  
                 </div>
                 }
+                </div>
+                <div className='empty-margin-top'></div>
             </div>
-            <div className='empty-margin-top'></div>
-        </div>
         <Navbar></Navbar>
         </motion.div>
     )

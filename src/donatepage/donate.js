@@ -17,32 +17,19 @@ function DonatePage() {
     const [cardNumber, setCardNumber] = useState('');
     const [expiration, setExpiration] = useState('');
     const [cvv, setCvv] = useState('');
+    const [amount, setAmount] = useState('');
+
 
     const [clientSecret, setClientSecret] = useState("");
 
-   const handleSubmit = (event) => {
-      event.preventDefault();
-  
-    // Get the form data
-    const formData = new FormData(event.target);
-  
-    // Add the text input value to the form data
-    const textInput = event.target.elements.textInput.value;
-    formData.append('textInput', textInput);
-  
-    // Send the data to the server
-    fetch('/api/submit-form', {
-    method: 'POST',
-    body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Server response:', data);
-    })
-    .catch(error => {
-    console.error('Error sending data:', error);
-  });
-    };
+    function handleClick(event) {
+        const newValue = event.target.value;
+        setAmount(newValue);
+      }
+
+   //const handleSubmit = (event) => {
+    //  event.preventDefault();
+    //};
         
 
         return (
@@ -51,9 +38,12 @@ function DonatePage() {
         animate={{ opacity: 1 , x:0 }}
         transition={{ ease: "easeOut", duration: 0.5 }}>
           <img src={back} className="backimgfordonate" ></img>
+          
+          
+          <div id="donate-page-container">
           <div className='horidiv'>
           <div className='donate-content'>
-                <div className='donate-empty-margin-top'></div>
+                
                 <TextTitle name='Donate now' colour='white'></TextTitle>
                 <TextP name='Asalamu alaykom wa alaykum salam' colour='white'></TextP>
                 <div className='donate-desc'>
@@ -71,37 +61,34 @@ function DonatePage() {
         
             <div id="donate-container">
                 <div id="donate-form">
-                    <div className="welcome-section">
-                        <h1 id="welcome-text">Welcome back!</h1>
-                        <h3 id="subwelcome-text" >Please enter your details</h3>
-                        <div className='line'></div>
-                    </div>
-                    <form id="donate-actual-form" >
+                    <div className="donate-section">
+                        <div className="donate-line"></div>
+                        <h3 className="donate-subtext">Please enter your details</h3>
+                        </div>
+                        <form id="donate-actual-form" style={{ textAlign: "center" }} >
                         <div className="donate-field">
-                            <label htmlFor="email" className="label-login">Email</label>
+                            <label className="donate-label" style={{fontSize:"30pt",textAlign:'center'}}>Amount:</label>
+                            <div style={{marginTop:"30pt",justifyContent: 'center',alignItems:'center'}}>
+                            <button type="button" className="donate-btn-amount" style={{width:'10%'}} onClick={handleClick} value="10">$10</button>
+                            <button type="button" className="donate-btn-amount" style={{width:'10%'}} onClick={handleClick} value="50">$50</button>
+                            <button type="button" className="donate-btn-amount" style={{width:'10%'}} onClick={handleClick} value="100">$100</button>
+                            </div>
                             <input 
-                                   id="email"
-                                   name="email"
-                                   type="email"
-                                   placeholder="Email"
-                                   className="input-login"
+                                   id="amount"
+                                   name="Amount"
+                                   type="integer"
+                                   placeholder="Amount"
+                                   className="donate-input"
+                                   style={{marginTop:'30%'}}
+                                   value={amount}
                             />
                         </div>
-                        <div className="login-field">
-                            <label htmlFor="password" className="label-login">Password</label>
-                            <input type="password"
-                                   id="password"
-                                   name="password"
-                                   placeholder="Password"
-                                   className="input-login"
-                            />
-                        </div>
-                        
-                        <div className="login-field" id="btn-field">
-                            <button type="submit" className="btn-login">Login</button>    
+                        <div className="donate-field" id="btn-field">
+                            <button type="submit" className="donate-btn">Next</button>    
                         </div>
                     </form>
                 </div>
+            </div>
             </div>
             </div>
         <Navbar></Navbar>
