@@ -11,13 +11,13 @@ function Landing(){
             
             <div className='content'>
                 <div className='emptymt'></div>
-                <h1 className='fst_title'>This is a heading</h1>
+                <h1 className='fst_title'>Together fighting</h1>
                 <div className='FancyTitle'>
-                    <h1 className='fst_title'>about</h1>
+                    <h1 className='fst_title'>against</h1>
                     <img src={highlighter} className='Highlighter'></img>
                 </div>
-                <div className='subtitle'><TextP colour='white' name="Lorem ipsum dolor sit amet consectetur.<br> Gravida sed tellus condimentum et est eu nunc."></TextP></div>
-                <div className='CTO-btn'><GreenButton size='large' name='Some call to action text'></GreenButton></div>
+                <div className='subtitle'><TextP colour='white' name="We are a reliable source of information and resources to help individuals and organizations understand the causes, effects, and solutions to pollution."></TextP></div>
+                <div className='CTO-btn'><GreenButton size='large' name='Learn more'></GreenButton></div>
                 
             </div>
             
