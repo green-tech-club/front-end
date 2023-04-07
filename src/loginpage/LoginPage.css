@@ -1,4 +1,4 @@
-#login-page {
+.page {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 
-#login-container {
+.login-container {
     position: relative;
     width: 35%;
     height: 70%;
@@ -46,7 +46,7 @@
     padding-bottom: 10px;
 }
 
-#login-form {
+.login-form {
     position: absolute;
     top: 0%;
     margin-left: 10%;
@@ -160,7 +160,14 @@
     font-size: 14pt;
     font-weight: bold;
     padding-left: 10px;
+    color: black;
 }
+
+.forgot-pass:hover{
+    cursor: pointer;
+    color: #029270;
+}
+
 .sign-up-text{
     display: flex;
     flex-direction: row;

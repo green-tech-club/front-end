@@ -47,7 +47,7 @@ function Dashboard() {
     transition={{ ease: "easeOut", duration: 0.5 }}>
 
       <div className="top-bar">
-        <div className="logout_but" onClick={handleLogout}> <p className="logout_btn_text">Log out</p> </div>
+        <button className="logout_but" onClick={handleLogout}> <p className="logout_btn_text">Log out</p> </button>
       </div>
 
       <div className='DashboardDivider'>
