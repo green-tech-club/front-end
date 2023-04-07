@@ -85,7 +85,6 @@
   align-items: center;
 }  
 #overlay.show {
-<<<<<<< HEAD
   display: flex;
 }
 .button-div{
@@ -129,7 +128,4 @@
 }
 ::placeholder {
   font-size: x-large;
-=======
-display: flex;
->>>>>>> 426c472edb7d58982926b51c2bb0f63a32d30042
 }
