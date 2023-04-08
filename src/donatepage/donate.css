@@ -91,7 +91,7 @@
   font-family: 'Outfit',sans-serif;
   font-size: 14pt;
   font-weight: bold;
-  text-align: center;
+  text-align: justify;
 }
 
 .donate-input {
@@ -100,12 +100,17 @@
   font-family: 'Outfit',sans-serif;
   width: 100%;
   margin-bottom: 2%;
-  padding: 0 5%;
+  padding: 5px;
   background-color: #F0F0F0;
   border: none;
   border-radius: 5px;
   outline: none;
   font-size: 1.2em;
+  box-sizing: border-box;
+}
+
+.donate-input::placeholder {
+  text-align:center;
 }
 
 #donate-field {
@@ -116,6 +121,7 @@
 }
 
 .donate-btn{
+  margin-top: 10%;
   width: 100%;
   height: 6vh;
   font-family: 'Outfit',sans-serif;
@@ -127,7 +133,6 @@
   font-weight: normal;
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  
 }
 
 .btn-login:hover{
@@ -165,4 +170,67 @@
     align-items: center;
     
   }
+  .checkmark-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
   
+  .checkmark {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid #28a745;
+    position: relative;
+    box-sizing: content-box;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .checkmark.checked {
+    background-color: #28a745;
+  }
+  
+  .checkmark-stem {
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background-color: #fff;
+    top: 34px;
+    left: 22px;
+    transform: rotate(45deg);
+  }
+  
+  .checkmark-kick {
+    position: absolute;
+    width: 3px;
+    height: 10px;
+    background-color: #fff;
+    top: 43px;
+    left: 15px;
+    transform: rotate(-45deg);
+  }
+  
+  @keyframes checkmark-animation {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .checkmark.checked:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: checkmark-animation 0.5s;
+  }
