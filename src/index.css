@@ -11,6 +11,8 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: 100vw;
+  height: 100vh;
 }
   
 body::-webkit-scrollbar {
@@ -32,4 +34,9 @@ body::-webkit-scrollbar-thumb {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
 }
