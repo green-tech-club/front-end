@@ -1,0 +1,71 @@
+#form-main-page {
+    width: 87%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 13%;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+}
+
+#title-field {
+    height: 15%;
+}
+
+#form-submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+#label-title {
+    font-family: 'Outfit',sans-serif;
+    font-weight: bold;
+    font-size: 17pt;
+    margin-right: 14%;
+}
+
+#title {
+    margin-top: 10px;
+    min-height: 50px;
+    font-family: 'Outfit',sans-serif;
+    width: 90%;
+    margin-bottom: 2%;
+    padding: 0 5%;
+    background-color: #F0F0F0;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1.2em;
+}
+
+#btn-form-upload {
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+#btn-form-remove {
+    display: none;
+    opacity: 0;
+    width: 0;
+    transition: all 0.5s ease;
+}
+
+#form-btn-field{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 8%;
+}

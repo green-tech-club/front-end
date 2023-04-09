@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "./Sidebar.css";
 
 const username = "Hungary"
-const Sidebar = ({ username }) => {
+const Sidebar = (props) => {
     const [backgroundPosition, setBackgroundPosition] = useState({ left: '-40%', top: '-3%', width: '200%' })
     const currentButton = useRef(null)
 
@@ -15,28 +15,30 @@ const Sidebar = ({ username }) => {
         currentButton.current = e.target
         const button = e.target
         const buttonRect = button.getBoundingClientRect()
-        const top = buttonRect.top - buttonRect.height * 2
+        const top = buttonRect.top - buttonRect.height * 2.6
         const left = '-40%'
+        const width = '200%'
+        props.newPage(button.innerText)
 
-        setBackgroundPosition({ left, top })
+        setBackgroundPosition({left, top, width})
     }
 
     const handleButtonEnter = (e) => {
         if(e.target === currentButton.current) return
         const button = e.target
         const buttonRect = button.getBoundingClientRect()
-        const top = buttonRect.top - buttonRect.height * 2
+        const top = buttonRect.top - buttonRect.height * 2.6
         const left = '-40%'
         const width = '42%'
-        setBackgroundPosition({ left, top,  width})
+        setBackgroundPosition({left, top, width})
     }
 
     const handleButtonLeave = (e) => {
         const buttonRect = currentButton.current.getBoundingClientRect()
-        const top = buttonRect.top - buttonRect.height * 2
+        const top = buttonRect.top - buttonRect.height * 2.6
         const left = '-40%'
         const width = '200%'
-        setBackgroundPosition({ left, top,  width})
+        setBackgroundPosition({left, top, width})
     }
 
     return (
