@@ -14,6 +14,8 @@ import Dashboard from './logindashboard/Dashboard'
 import LoginPage from "./loginpage/LoginPage";
 import DonatePage from './donatepage/donate';
 import SignUpPage from "./signuppage/SignUpPage";
+import ParisA from  "./parisagreement/parisagreement";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +44,11 @@ const router = createBrowserRouter([
   {
     path: "donate",
     element: <DonatePage/>,
-  }
+  },
+  {
+    path: "paris",
+    element: <ParisA/>,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

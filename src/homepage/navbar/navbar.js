@@ -40,7 +40,9 @@ function Navbar() {
                 </Link>
             </li>
             <li className={`li ${(pagenum===1)? "selected" : ""}`}>
+              <Link to='/paris'>
                 <a href="#" className={`a ${(pagenum===1)? "selected" : ""}`}>Paris Agreement</a>
+              </Link>
             </li>
             <li className={`li ${(pagenum===2)? "selected" : ""}`}>
                 <a href="#" className={`a ${(pagenum===2)? "selected" : ""}`}>Statistics</a>
