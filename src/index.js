@@ -10,7 +10,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import QAPage from './qa/qa';
-import Dashboard from './logindashboard/Dashboard'
+import WholeDashboard from './logindashboard/WholeDashboard'
 import LoginPage from "./loginpage/LoginPage";
 import DonatePage from './donatepage/donate';
 import SignUpPage from "./signuppage/SignUpPage";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard/>,
+    element: <WholeDashboard/>,
   },
   {
     path: "login",

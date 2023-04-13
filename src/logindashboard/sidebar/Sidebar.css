@@ -7,7 +7,8 @@
     background-color: #00B088; /* Updated color */
     color: #fff; /* Added white text color */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 1%;
+    overflow: hidden;
   }
 
   .user-info {
@@ -22,17 +23,32 @@
     margin-left: 10px;
   }
   
-  .side-element {
+.side-element {
+    position: relative;
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
+}
   
   .side-element-li {
+    z-index: 1000;
     font-size: 16pt;
     font-family: 'Outfit',sans-serif;
     font-weight: normal;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     cursor: pointer;
+    position: relative;
   }
+
+#side-bar-li-back {
+    z-index: 1;
+    background-color: #007d60;
+    border-radius: 0 3px 3px 0;
+    position: absolute;
+    width: 200%;
+    height: 35px;
+    left: -40%;
+    top: 0;
+    transition: all 0.3s cubic-bezier(0.6, 0.4, 0, 1) 0.03s;
+}
   
