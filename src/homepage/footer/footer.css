@@ -14,12 +14,115 @@
     padding-left: 10vw;
 }
 .footer-content2 {
-  
     position: absolute;
-    right: 10vw;
+    right: 30vw;
 }
 
 .footer-t{
   padding-bottom: 1vh;
+  color: white;
+  font-size: 30pt;
+  font-family: "Outfit",sans-serif;
+  text-align: left;
+  margin: 0;
+  margin-bottom: -1%;
 }
 
+.footer-b{
+    padding-bottom: 1vh;
+  }
+  
+.social-icons{
+    display: flex;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+.fb-ico{
+    background-image: url('./fb-ico.png');
+    background-size: contain;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.wa-ico{
+    background-image: url('./wa-ico.png');
+    background-size: contain;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.email-ico{
+    background-image: url('./email-ico.png');
+    background-size: contain;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.tw-ico{
+    background-image: url('./tw-ico.png');
+    background-size: contain;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+
+.footer-content2 li {
+    margin: 0 1rem;
+  }
+  
+  .footer-content2 ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .footer-content2 ul li {
+    margin: 0 1.2rem;
+    text-align: left;
+    position: relative; /* add this to make the ::after element position relative to the li element */
+  }
+  
+  .footer-content2 ul li::after {
+    content: "";
+    position: absolute;
+    bottom: -8px; /* adjust this value to control the position of the shape */
+    align-content: left;
+    left: 0%;
+    width: 15%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0;
+    transform: opacity 0; /* initially set the scale to 0 to hide the shape */
+    transition: opacity 0.3s ease-in-out; /* add transition to animate the shape */
+  }
+  .footer-content2 a {
+    font-family: 'Outfit' ,sans-serif;
+    text-decoration: none;
+    text-align: left;
+    color: #fff;
+    font-weight: 400;
+    font-size: 20px;
+  }
+  
+  .footer-content2 ul li:hover::after {
+    opacity: 1; /* set the scale to 1 on hover to show the shape */
+  }
+
+  .footer-content2 ul li a.selected{
+    font-weight: 600;
+  }
+  .footer-content2 ul li.selected::after{
+    position: absolute;
+    opacity: 1;
+    left: 20%;
+    bottom: -8px;
+    width: 60%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
