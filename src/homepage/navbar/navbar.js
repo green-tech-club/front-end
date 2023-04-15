@@ -10,6 +10,7 @@ function Navbar() {
   var pagePath = window.location.pathname;
   if(pagePath==="/faq") pagenum=4;
   if(pagePath==="/donate") pagenum=5;
+  if(pagePath==="/paris-agreement") pagenum=1;
   //console.log(pagenum)
 
   useEffect(() => {
@@ -31,7 +32,7 @@ function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <Link to='/'>
-        <a className="navbar-left">Website</a>
+        <a className="navbar-left">Greentech</a>
         </Link>
         <ul>
             <li className={`li ${(pagenum===0)? "selected" : ""}`}>
@@ -40,7 +41,7 @@ function Navbar() {
                 </Link>
             </li>
             <li className={`li ${(pagenum===1)? "selected" : ""}`}>
-              <Link to='/paris'>
+              <Link to='/paris-agreement'>
                 <a href="#" className={`a ${(pagenum===1)? "selected" : ""}`}>Paris Agreement</a>
               </Link>
             </li>

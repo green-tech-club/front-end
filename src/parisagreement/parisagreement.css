@@ -9,23 +9,79 @@
   }
 
 .conatainervideo{
-    display: grid;
+    display: flex;
     height: 50vh;
-    grid-template-columns: 2fr;
-    grid-template-rows: (2, 1fr);
-    align-items: center;
-    margin-top: 10vh;
-    place-items: center;
+    margin-top: 12vh;
 }
 
-#paris-container {
-  position: relative;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 10px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-}
 
 
 .paris-page-container {
 
+}
+
+.paris-header {
+  position: relative; 
+  overflow: hidden ;
+  height: 30vh;
+}
+.content {
+  margin-left: 1vw;;
+  padding-top: 2rem;
+  position: absolute;
+  top: 0; left: 0; 
+}
+.empty-margin-top{
+  height: 4rem;
+}
+.ParisTitle{
+  margin-bottom: 1rem;
+}
+.ParisSubtitle{
+  font-family: 'Outfit',sans-serif;
+  font-size: 16pt;
+  font-weight: 400;
+  margin: 0%;
+  text-align: left;
+  color: white;
+}
+
+.pa-info-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-around;
+  margin: 7vw;
+  margin-top: 4vh;
+}
+
+@media screen and (min-width: 1400px) {
+  .pa-info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 7vw;
+    margin-top: 4vh;
+  }
+  
+}
+
+.pa-info-p{
+  margin-top: 2vh;
+}
+
+
+.pa-info-title{
+  margin-bottom: -2vh;
+}
+
+.pa-info-text{
+  display: flex;
+  flex-direction: column;
+}
+
+.gotoUNwebsite{
+  text-decoration: none;
+  margin-top: 3vh;
 }

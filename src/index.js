@@ -46,7 +46,7 @@ const router = createBrowserRouter([
     element: <DonatePage/>,
   },
   {
-    path: "paris",
+    path: "paris-agreement",
     element: <ParisA/>,
   },
 ]);
