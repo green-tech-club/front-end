@@ -7,7 +7,7 @@ import back from'./backdonate.jpg'
 import TextTitle from '../stylingComponents/Texts/Title';
 import TextP from '../stylingComponents/Texts/Paragraph';
 import HorDiv from '../stylingComponents/divs/EasyDivs';
-
+import Footer from '../homepage/footer/footer';
 
 
 
@@ -107,10 +107,11 @@ function DonatePage() {
     };
         
 return (
-<motion.div className="PaymentForm" 
+<motion.div
   initial={{ opacity: 0 , x:20}}
   animate={{ opacity: 1 , x:0 }}
   transition={{ ease: "easeOut", duration: 0.5}}>
+  <div className='PaymentForm'>
   <img src={back} className="backimgfordonate" />
   <div id="donate-page-container">
     <div className='horidiv'>
@@ -202,6 +203,8 @@ return (
       </div>
     </div>
   </div>
+  </div>
+  <Footer></Footer>
   <Navbar></Navbar>
 </motion.div>
 

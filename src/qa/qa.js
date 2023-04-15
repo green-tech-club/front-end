@@ -9,6 +9,7 @@ import { renderMatches } from 'react-router-dom';
 import TextTitle from '../stylingComponents/Texts/Title';
 import TextP from '../stylingComponents/Texts/Paragraph';
 import GreenButton from '../stylingComponents/buttons/greenButton';
+import Footer from '../homepage/footer/footer';
 
 
 function QAPage(){
@@ -125,6 +126,8 @@ function QAPage(){
                 </div>
                 <div className='empty-margin-top'></div>
             </div>
+            
+        <Footer></Footer>
         <Navbar></Navbar>
         </motion.div>
     )

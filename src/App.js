@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import Landing from './homepage/landing/landing'
 import Navbar from './homepage/navbar/navbar';
 import NewsGrid from './homepage/newsgrid/NewsGrid';
+import Footer from './homepage/footer/footer';
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <Landing></Landing>
       <NewsGrid></NewsGrid>
       <div className='div1'></div>
+      <Footer></Footer>
       <Navbar></Navbar>
     </motion.div>
   );
