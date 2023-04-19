@@ -6,14 +6,8 @@ import {Link, useNavigate} from "react-router-dom";
 import "./SignUpPage.css";
 import TextP from "../stylingComponents/Texts/Paragraph";
 import countryCodes from './countryCodes.json';
-import 'flag-icon-css/css/flag-icon.css';
 
 const lookup = require('country-code-lookup');
-
-function FlagIcon({ countryCode }) {
-    const flagClass = `flag-icon flag-icon-${countryCode.toLowerCase()}`;
-    return <span className={flagClass} />;
-  }
 
 function getCountryCode(countryName) {
   const country = lookup.byCountry(countryName);
@@ -182,7 +176,6 @@ function SignUpPage() {
                             </div>
                             
                         <div>
-                        <FlagIcon countryCode={countryCodeISO} /> {/* Displays the US flag */}
                         <TextP fontsize="10pt" name={`Country : ${countryName}`}></TextP>
                         </div>
                         
