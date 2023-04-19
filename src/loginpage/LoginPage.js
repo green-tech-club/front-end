@@ -88,7 +88,6 @@ function LoginPage() {
             localStorage.removeItem("email")
         }
         sessionStorage.setItem("access_token", data.access_token)
-        alert("Login successful! Redirecting to dashboard...")
         navigate('/dashboard')
     }
 
@@ -146,7 +145,7 @@ function LoginPage() {
                             }
                             <div className="sign-up-text">
                                 <p className="remember-me-text">Don't have an account?</p>
-                                <Link to='/signup'>
+                                <Link to='/signup-code'>
                                     <p className="forgot-pass">Sign up</p>
                                 </Link>
                             </div>

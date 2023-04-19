@@ -4,8 +4,28 @@ import "../loginpage/LoginPage.css";
 import return_btn from '../loginpage/return.png';
 import {Link, useNavigate} from "react-router-dom";
 import "./SignUpPage.css";
+import TextP from "../stylingComponents/Texts/Paragraph";
+import countryCodes from './countryCodes.json';
+import 'flag-icon-css/css/flag-icon.css';
+
+const lookup = require('country-code-lookup');
+
+function FlagIcon({ countryCode }) {
+    const flagClass = `flag-icon flag-icon-${countryCode.toLowerCase()}`;
+    return <span className={flagClass} />;
+  }
+
+function getCountryCode(countryName) {
+  const country = lookup.byCountry(countryName);
+  return country ? country.iso2 : null;
+}
+
 
 function SignUpPage() {
+    var pagePath = window.location.pathname;
+    let codeCountry = useState('');
+    const [countryName,setCountryName] = useState('') ;
+    const [countryCodeISO,setCountryCodeISO] = useState('') ;
     const [formData, setFormData] = React.useState({
         name: "",
         email: "",
@@ -14,6 +34,16 @@ function SignUpPage() {
     const [repeatPassword, setRepeatPassword] = React.useState("")
     const navigate = useNavigate()
 
+    const handleCodeChange = () => {
+        
+        codeCountry = pagePath.split('/')[2];
+        const country = countryCodes.find(c => c.code === codeCountry);
+        if (country) {
+            setCountryName(country.name);
+            setCountryCodeISO(getCountryCode(country.name))
+          }
+        console.log(countryName);
+    };
     //handle change in input fields
     function handleChange(event) {
         if(event.target.name==="repeatPassword")
@@ -29,6 +59,8 @@ function SignUpPage() {
 
     //do not allow user to access login page if they are already logged in
     useEffect(()=>{
+        
+        handleCodeChange();
         if(localStorage.getItem("access_token") !== null)
         {
             navigate('/')
@@ -81,17 +113,18 @@ function SignUpPage() {
                     className="page"
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
-                    transition={{duration: 0.8}}
+                    transition={{duration: 0}}
         >
-            <div id="sign-up-container" className="login-container">
-                <div id="sign-up-form" className="login-form">
+            <div id="sign-up-container" className="signup-container">
+                <div id="sign-up-form" className="signup-form">
                     <Link to='/'>
                         <img id="return-btn" src={return_btn}/>
                     </Link>
-                    <div className="welcome-section" id="sign-up-welcome-section">
+                    <div className="presignup-welcome-section" id="sign-up-welcome-section">
                         <h1 id="welcome-text">Welcome back!</h1>
                         <h3 id="subwelcome-text" >Please enter your details</h3>
                         <div className='line'></div>
+                        
                     </div>
                     <form id="actual-sign-up-form" onSubmit={handleSubmit}>
                         <div className="login-field">
@@ -147,6 +180,12 @@ function SignUpPage() {
                             <div className="sign-up-text">
                                 <p className="remember-me-text">Already have an account?</p> <p className="forgot-pass">Login</p>
                             </div>
+                            
+                        <div>
+                        <FlagIcon countryCode={countryCodeISO} /> {/* Displays the US flag */}
+                        <TextP fontsize="10pt" name={`Country : ${countryName}`}></TextP>
+                        </div>
+                        
                         </div>
                     </form>
                 </div>

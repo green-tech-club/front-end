@@ -15,6 +15,7 @@ import LoginPage from "./loginpage/LoginPage";
 import DonatePage from './donatepage/donate';
 import SignUpPage from "./signuppage/SignUpPage";
 import ParisA from  "./parisagreement/parisagreement";
+import PreSignUp from './signuppage/PreSignUp';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
     element: <LoginPage/>,
   },
   {
+    path: "signup-code",
+    element: <PreSignUp/>,
+  },
+  {
     path: "signup",
     element: <SignUpPage/>,
   },
@@ -49,6 +54,10 @@ const router = createBrowserRouter([
     path: "paris-agreement",
     element: <ParisA/>,
   },
+  {
+    path: "signup/:code/",
+    element: <SignUpPage/>,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

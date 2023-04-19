@@ -1,10 +1,54 @@
-#actual-sign-up-form{
-    margin-top: 80%;
-    margin-bottom: 7%;
+.signup-form {
+    position: relative;
+    top: 0%;
+    margin-left: 10%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
-#sign-up-container{
-    height: 84%;
+
+.presignup-form {
+    position: relative;
+    top: 0%;
+    margin-left: 10%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
+
+.signup-container{
+    position: relative;
+    width: 35%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.presignup-container{
+    position: relative;
+    width: 35%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
 #sign-up-welcome-section{
-    margin-bottom: 12%;
+    margin-bottom: 0%;
 }
+
+
+.presignup-welcome-section{
+    position: inherit;
+}
+
+
