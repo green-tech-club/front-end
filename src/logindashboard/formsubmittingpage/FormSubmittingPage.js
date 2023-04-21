@@ -1,6 +1,7 @@
 import './FormSubmittingPage.css'
 import React, {useEffect, useRef, useState} from "react";
 import {motion} from "framer-motion";
+import backendAddress from '../../backend-address.json';
 import { FileUploader } from "react-drag-drop-files";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
@@ -121,6 +122,7 @@ function FormSubmittingPage(){
     const handleFormSubmit = (e) => {
         e.preventDefault()
         if(!fileUploaded) return
+        console.log(localStorage.getItem('access_token'))
         const uploadTask = uploadBytesResumable(storageRef, formData.file);
         uploadTask.on('state_changed',
             (snapshot) => {
@@ -151,7 +153,7 @@ function FormSubmittingPage(){
                         })
                     };
 
-                    let url = "http://localhost:8000/reports/submit"
+                    let url = backendAddress.hostname+"/reports/submit"
 
                     fetch(url, requestOptions)
                         .then(res => res.json())
@@ -167,13 +169,13 @@ function FormSubmittingPage(){
                                 console.log(error)
                             }
                         )
-                });
+                })
             }
         );
     }
 
     function submitSuccess(data){
-        navigate('/dashboard')
+        window.location.reload()
         console.log(data)
     }
 
