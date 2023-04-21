@@ -1,16 +1,33 @@
 import './FormSubmittingPage.css'
 import React, {useEffect, useRef, useState} from "react";
 import {motion} from "framer-motion";
+import backendAddress from '../../backend-address.json';
 import { FileUploader } from "react-drag-drop-files";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// I will provide the firebase-config.json file on ClickUp
+import firebaseConfig from '../../firebase-config.json';
+import {useNavigate} from "react-router-dom";
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const storage = getStorage(app);
+const storageRef = ref(storage, 'reports');
 
 function FormSubmittingPage(){
     const [fileUploaded, setFileUploaded] = useState(false)
-    const [formData, setFormData] = useState({title: '', file: null})
+    const [formData, setFormData] = useState({title: '', file: null, country: ''})
     const removeBtn = useRef(null)
     const uploadBtn = useRef(null)
     const formSubmitContainer = useRef(null)
+    const line1 = useRef(null)
+    const line2 = useRef(null)
+    const line3 = useRef(null)
+    const [line2Text, setLine2Text] = useState("or")
     const fileTypes = ["DOCX", "PDF", "DOC"]
+    const navigate = useNavigate()
 
     useEffect(() => {
         if(fileUploaded){
@@ -21,6 +38,7 @@ function FormSubmittingPage(){
                 removeBtn.current.style.width = '25%'
                 uploadBtn.current.style.width = '70%'
             }, 1);
+            displayFileName()
         }
         else{
             removeBtn.current.style.opacity = '0'
@@ -30,6 +48,7 @@ function FormSubmittingPage(){
             setTimeout(() => {
                 removeBtn.current.style.display = 'none'
             }, 500);
+            displayTips()
         }
     }, [fileUploaded])
 
@@ -53,18 +72,111 @@ function FormSubmittingPage(){
         console.log(state)
         if(state){
             formSubmitContainer.current.style.scale = '1.02'
-            formSubmitContainer.current.style.boxShadow = '0 0 20px 0 rgba(0, 0, 0, 0.5)'
+            formSubmitContainer.current.style.boxShadow = '0 0 20px 0 rgba(0, 0, 0, 0.2)'
+            line1.current.style.opacity = '0'
+            line2.current.style.opacity = '0'
+            line3.current.style.opacity = '0'
+            setTimeout(() => {
+                setLine2Text("Drop here")
+                line2.current.style.opacity = '1'
+                line2.current.style.scale = '2'
+            }
+            , 150);
         }
         else{
             formSubmitContainer.current.style.scale = '1'
-            formSubmitContainer.current.style.boxShadow = '0 0 15px 0 rgba(0, 0, 0, 0.3)'
+            formSubmitContainer.current.style.boxShadow = 'none'
+            if(fileUploaded){
+                displayFileName()
+                return
+            }
+            displayTips()
         }
+    }
+
+    function displayFileName(){
+        setTimeout(() => {
+            line1.current.style.opacity = '0'
+            line2.current.style.opacity = '0'
+            line3.current.style.opacity = '0'
+        }, 100)
+        setTimeout(() => {
+            setLine2Text(formData.file.name)
+            line2.current.style.opacity = '1'
+            line2.current.style.scale = '2'
+        },150)
+    }
+
+    function displayTips(){
+        line2.current.style.scale = '1'
+        line2.current.style.opacity = '0'
+        setTimeout(() => {
+                setLine2Text("or")
+                line1.current.style.opacity = '1'
+                line3.current.style.opacity = '1'
+                line2.current.style.opacity = '1'
+            }
+            , 150);
     }
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
         if(!fileUploaded) return
-        console.log(formData)
+        console.log(localStorage.getItem('access_token'))
+        const uploadTask = uploadBytesResumable(storageRef, formData.file);
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                    case 'running':
+                        console.log('Upload is running');
+                        break;
+                }
+            },
+            (error) => {
+                // Handle unsuccessful uploads
+            },
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            "title": formData.title,
+                            "report_url": downloadURL,
+                            "access_token": localStorage.getItem('access_token'),
+                            "country": formData.country
+                        })
+                    };
+
+                    let url = backendAddress.hostname+"/reports/submit"
+
+                    fetch(url, requestOptions)
+                        .then(res => res.json())
+                        .then(data => {
+                            if(data.detail !== undefined)
+                            {
+                                alert(data.detail)
+                                return
+                            }
+                            submitSuccess(data)
+                        })
+                        .catch(error => {
+                                console.log(error)
+                            }
+                        )
+                })
+            }
+        );
+    }
+
+    function submitSuccess(data){
+        window.location.reload()
+        console.log(data)
     }
 
     return(
@@ -97,9 +209,9 @@ function FormSubmittingPage(){
                         onDraggingStateChange={handleFileDrag}
                     >
                         <div id='form-submit-container' ref={formSubmitContainer}>
-                            <h2>Drag and Drop here</h2>
-                            <h3>or</h3>
-                            <h2>Browse Files</h2>
+                            <h2 ref={line1} className='submit-text'>Drag and Drop here</h2>
+                            <h3 ref={line2} className='submit-text'>{line2Text}</h3>
+                            <h2 ref={line3} className='submit-text'>Browse Files</h2>
                         </div>
                     </FileUploader>
                 </div>

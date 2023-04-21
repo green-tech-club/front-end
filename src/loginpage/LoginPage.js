@@ -3,6 +3,7 @@ import {motion} from "framer-motion";
 import "./LoginPage.css";
 import return_btn from './return.png';
 import {Link, useNavigate} from "react-router-dom";
+import backendAddress from "../backend-address.json";
 
 function LoginPage() {
     const [formData, setFormData] = React.useState({
@@ -54,6 +55,7 @@ function LoginPage() {
 
         const requestOptions = {
             method: 'POST',
+            mode: 'cors',
             headers: {'Content-Type': 'application/x-www-form-urlencoded' },
             body: tempForm
         };
@@ -62,7 +64,7 @@ function LoginPage() {
             for(let t = Date.now(); Date.now() - t <= ms;);
         }
 
-        let url = "http://gt.ochawork.shop/login"
+        let url = backendAddress.hostname+"/auth/login"
 
         fetch(url, requestOptions)
             .then(res => res.json())
@@ -87,7 +89,7 @@ function LoginPage() {
         else{
             localStorage.removeItem("email")
         }
-        sessionStorage.setItem("access_token", data.access_token)
+        localStorage.setItem("access_token", data.access_token)
         navigate('/dashboard')
     }
 

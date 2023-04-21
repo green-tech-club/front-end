@@ -1,11 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import "./Sidebar.css";
+import backendAddress from "../../backend-address.json";
 
 const username = "Hungary"
 const Sidebar = (props) => {
     const [backgroundPosition, setBackgroundPosition] = useState({ left: '-40%', top: '-3%', width: '200%' })
     const currentButton = useRef(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         currentButton.current = document.getElementById('init-li');
@@ -41,6 +43,25 @@ const Sidebar = (props) => {
         setBackgroundPosition({left, top, width})
     }
 
+    const handleLogoutClick = () => {
+        localStorage.clear()
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json' },
+        }
+        const url = backendAddress.hostname+'/auth/logout'
+        fetch(url, requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                    console.log(error)
+                }
+            )
+        navigate('/login')
+    }
+
     return (
     <div className="sidebar">
       <div className="user-info">
@@ -51,6 +72,7 @@ const Sidebar = (props) => {
         <li className='side-element-li' id="init-li" onClick={handleButtonClick} onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave}>Dashboard</li>
         <li className='side-element-li' onClick={handleButtonClick} onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave}>Form</li>
         <li className='side-element-li' onClick={handleButtonClick} onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave}>Settings</li>
+        <li className='side-element-li' onClick={handleLogoutClick} onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave}>Logout</li>
       </ul>
     </div>
   );
