@@ -19,6 +19,7 @@ function QAPage(){
     const [email, setEmail] = useState('');
     const [question, setQuestion] = useState('');
     const [showPopup, setShowPopup] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false);
     const butStyle = {
         borderColor: "transparent",
         marginTop: "3vh",
@@ -33,6 +34,7 @@ function QAPage(){
           .then((result) => {
             console.log(result.text);
             setShowPopup(false);
+            setShowConfirm(true);
           }, (error) => {
             console.log(error.text);
           });
@@ -57,47 +59,57 @@ function QAPage(){
             </div>   
             <div className='QuestionsRow'>
                 <div className='Question'>
-                    <h1 className='QuestionTitle'>Question</h1>
+                    <h1 className='QuestionTitle'>How are we tracking progress?</h1>
                     <div className='line'></div>
-                    <p className='QuestionText'>Lorem ipsum dolor sit amet consectetur. 
-                    Lacinia in convallis nam feugiat lectus. Turpis quis id scelerisque 
-                    diam mi lacus nulla id. Accumsan eget nisl quis ac consequat sollicitudin vestibulum. 
-                    Sollicitudin blandit ac nibh fermentum viverra ornare. Donec diam scelerisque ipsum elementum.</p>
+                    <p className='QuestionText'>With the Paris Agreement, countries established an enhanced transparency framework (ETF). 
+                    Under ETF, starting in 2024, countries will report transparently on actions taken and progress in climate change 
+                    mitigation, adaptation measures and support provided or received. It also provides for international procedures for 
+                    the review of the submitted reports. The information gathered through the ETF will feed into the Global stocktake 
+                    which will assess the collective progress towards the long-term climate goals.</p>
                     </div>
                 <div className='Question'>
-                    <h1 className='QuestionTitle'>Question</h1>
+                    <h1 className='QuestionTitle'>What have we achieved so far?</h1>
                     <div className='line'></div>
-                    <p className='QuestionText'>Lorem ipsum dolor sit amet consectetur. Lacinia in convallis nam feugiat lectus.</p>
+                    <p className='QuestionText'>Although climate change action needs to be massively increased to achieve the goals of 
+                    the Paris Agreement, the years since its entry into force have already sparked low-carbon solutions and new markets. 
+                    More and more countries, regions, cities and companies are establishing carbon neutrality targets. Zero-carbon 
+                    solutions are becoming competitive across economic sectors representing 25% of emissions. This trend is most 
+                    noticeable in the power and  transport sectors and has created many new business opportunities for early movers.</p>
                 </div>
             </div>
             <div className='QuestionsRow'>
                 <div className='Question'>
-                    <h1 className='QuestionTitle'>Question</h1>
+                    <h1 className='QuestionTitle'>How is my country doing in terms of meeting its commitments under the Paris Agreement?</h1>
                     <div className='line'></div>
-                    <p className='QuestionText'>Lorem ipsum dolor sit amet consectetur. 
-                    Lacinia in convallis nam feugiat lectus. Turpis quis id scelerisque 
-                    diam mi lacus nulla id. Accumsan eget nisl quis ac consequat sollicitudin vestibulum. 
-                    Sollicitudin blandit ac nibh fermentum viverra ornare. Donec diam scelerisque ipsum elementum.</p>
+                    <p className='QuestionText'>You can view the statistics regarding your country by using the provded filters in our 
+                    Statistics page. You can view a wide variety of data by using our filteration tools so feel free to try them out.</p>
                     </div>
                 <div className='Question'>
-                    <h1 className='QuestionTitle'>Question</h1>
+                    <h1 className='QuestionTitle'>Can I use the data submitted in the ETF for my research and alaysis?</h1>
                     <div className='line'></div>
-                    <p className='QuestionText'>Lorem ipsum dolor sit amet consectetur. Lacinia in convallis nam feugiat lectus.</p>
+                    <p className='QuestionText'>You can view the climate data provided by the countries in our Statstics page. The 
+                    financing and support between countries can also be viewed in the Financial Flow page. All the data you can view 
+                    in our Statstics page is open to the public so feel free to use it Our goal is to include everyone in climate 
+                    solutions so the data.</p>
                 </div>
             </div>
             <div className='QuestionsRow'>
                 <div className='Question'>
-                    <h1 className='QuestionTitle'>Question</h1>
+                    <h1 className='QuestionTitle'>How often is the data on your website updated?</h1>
                     <div className='line'></div>
-                    <p className='QuestionText'>Lorem ipsum dolor sit amet consectetur. 
-                    Lacinia in convallis nam feugiat lectus. Turpis quis id scelerisque 
-                    diam mi lacus nulla id. Accumsan eget nisl quis ac consequat sollicitudin vestibulum. 
-                    Sollicitudin blandit ac nibh fermentum viverra ornare. Donec diam scelerisque ipsum elementum.</p>
+                    <p className='QuestionText'>We update the data on our website as soon as it becomes available from the ETFs submitted 
+                    by the countries. This includes data from countries' national greenhouse gas inventories and other climate-related 
+                    data, which are typically submitted every two years as part of their 'national communications' under the Paris 
+                    Agreement. While the frequency of updates may vary depending on the particular ETF or data source, we strive to keep 
+                    our data as current as possible.</p>
                     </div>
                 <div className='Question'>
-                    <h1 className='QuestionTitle'>Question</h1>
+                    <h1 className='QuestionTitle'>How will my donations be used?</h1>
                     <div className='line'></div>
-                    <p className='QuestionText'>Lorem ipsum dolor sit amet consectetur. Lacinia in convallis nam feugiat lectus.</p>
+                    <p className='QuestionText'>Not all developing countries have sufficient capacities to deal with many of the 
+                    challenges brought by climate change. As a result, the Paris Agreement places great emphasis on climate-related 
+                    capacity-building for developing countries and requests all developed countries to enhance support for 
+                    capacity-building actions in developing countries. The donations recieved will also be a contributing factor to assist developing countries in dealing with climate change problems.</p>
                 </div>
             </div>
             <div className='QuestionsRow'>
@@ -141,7 +153,21 @@ function QAPage(){
                      </div>
                 </div>
                 }
+            {showConfirm &&
+                <div id="confirm_overlay" className="show">
+                <div id = "confirm_popup">
+                <div className='confirmform'>
+                <button className='close-button' onClick={() => setShowConfirm(false)}><img src={closeimg} className='qaclosebtn'></img></button>
+                <div className='confirmformheader'>
+                    <TextTitle name='Question sent!' colour='black' ></TextTitle>
+                    <div className='line'></div>
+                    <p className='QuestionText'>we will answer your question shortly!</p>
+                    </div>
                 </div>
+                </div>
+                </div>
+            }
+            </div>
             </div>
             
         </motion.div>

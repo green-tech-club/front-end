@@ -41,8 +41,8 @@
   margin: 0%;
   margin-left: -0.2rem;
   text-align: left;
+  max-width: 40rem;
   color: black;
-
 }
 .QuestionText{
   font-family: 'Outfit',sans-serif;
@@ -72,7 +72,6 @@
   width: 35%;
   height: 80%;
 }
-
 #overlay {
   position: fixed;
   top: 0;
@@ -101,19 +100,15 @@
   border: none;
   cursor: pointer;
 }
-
 .questionform{
   padding: 7%;
   padding-top: 0%;
 }
-
-
 .label-qa {
   font-size: 1.3em;
   font-family: 'Outfit',sans-serif;
   font-size: 14pt;
 }
-
 .input-qa {
   margin-top: 10px;
   height: 6vh;
@@ -127,7 +122,6 @@
   outline: none;
   font-size: 1.2em;
 }
-
 .input-qatext {
   margin-top: 10px;
   height: 18vh;
@@ -141,13 +135,45 @@
   border-radius: 5px;
   outline: none;
   font-size: 1.2em;
+  resize: none;
 }
-
-
 .qaclosebtn{
   width: 20px;
 }
-
 .questionformheader{
+  margin-bottom: 7%;
+}
+#confirm_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}  
+#confirm_overlay.show {
+  display: flex;
+}
+#confirm_popup {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  text-align: left;
+  justify-content: center;
+  align-items: left;
+  width: 37%;
+  height: 30%;
+}
+.confirmform{
+  padding: 7%;
+  padding-top: 0%;
+}
+.confirmformheader{
+  margin-left: 24%;
   margin-bottom: 7%;
 }
