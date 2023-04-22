@@ -19,6 +19,7 @@ const storageRef = ref(storage, 'reports');
 function FormSubmittingPage(){
     const [fileUploaded, setFileUploaded] = useState(false)
     const [formData, setFormData] = useState({title: '', file: null, country: ''})
+    const [submitting, setSubmitting] = useState(false)
     const removeBtn = useRef(null)
     const uploadBtn = useRef(null)
     const formSubmitContainer = useRef(null)
@@ -128,6 +129,9 @@ function FormSubmittingPage(){
             (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('Upload is ' + progress + '% done');
+                setSubmitting(true)
+                setFileUploaded(false)
+                uploadBtn.current.style.cursor="auto"
                 switch (snapshot.state) {
                     case 'paused':
                         console.log('Upload is paused');
@@ -142,6 +146,7 @@ function FormSubmittingPage(){
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    setSubmitting(true)
                     const requestOptions = {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json' },
@@ -217,7 +222,18 @@ function FormSubmittingPage(){
                 </div>
                 <div className="form-field" id="form-btn-field">
                     <button id="btn-form-remove" type="button" ref={removeBtn} onClick={handleRemoveClicked}>Remove</button>
-                    <button id="btn-form-upload" type="submit" ref={uploadBtn}>{fileUploaded? "Upload" : "Please Select a File First"}</button>
+                    <button id="btn-form-upload" type="submit" ref={uploadBtn} onMouseEnter={event => {if(fileUploaded)event.target.style.cursor="pointer"}} onMouseLeave={event => {if(fileUploaded)event.target.style.cursor="auto"}}>
+                        {!submitting&& (fileUploaded? "Upload" : "Please Select a File First")}
+                        {
+                            submitting&&
+                            <div className="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        }
+                    </button>
                 </div>
             </form>
         </motion.div>
