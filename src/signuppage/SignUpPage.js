@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 import "./SignUpPage.css";
 import TextP from "../stylingComponents/Texts/Paragraph";
 import countryCodes from './countryCodes.json';
+import backendAddress from "../backend-address.json";
 
 const lookup = require('country-code-lookup');
 
@@ -24,6 +25,10 @@ function SignUpPage() {
         name: "",
         email: "",
         password: "",
+        is_active: true,
+        is_superuser: false,
+        is_verified: false,
+        role: "test"
     })
     const [repeatPassword, setRepeatPassword] = React.useState("")
     const navigate = useNavigate()
@@ -63,7 +68,6 @@ function SignUpPage() {
 
     function handleSubmit(event) {
         event.preventDefault()
-
         if (formData.password !== repeatPassword) {
             alert("Passwords do not match!")
             return
@@ -79,7 +83,7 @@ function SignUpPage() {
             for(let t = Date.now(); Date.now() - t <= ms;);
         }
 
-        let url = "http://gt.ochawork.shop/signup"
+        let url = backendAddress.hostname+"/auth/register"
 
         fetch(url, requestOptions)
             .then(res => res.json())
