@@ -16,6 +16,7 @@ import DonatePage from './donatepage/donate';
 import SignUpPage from "./signuppage/SignUpPage";
 import ParisA from  "./parisagreement/parisagreement";
 import PreSignUp from './signuppage/PreSignUp';
+import ContactPage from './contactpage/ContactPage';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "signup/:code/",
     element: <SignUpPage/>,
+  },
+  {
+    path: "contact",
+    element: <ContactPage/>,
   }
 ]);
 

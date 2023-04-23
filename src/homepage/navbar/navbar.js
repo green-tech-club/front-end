@@ -11,6 +11,7 @@ function Navbar() {
   if(pagePath==="/faq") pagenum=4;
   if(pagePath==="/donate") pagenum=5;
   if(pagePath==="/paris-agreement") pagenum=1;
+  if(pagePath==="/contact") pagenum=6;
   //console.log(pagenum)
 
   useEffect(() => {
@@ -62,7 +63,9 @@ function Navbar() {
               </Link>
             </li>
             <li className={`li ${(pagenum===6)? "selected" : ""}`}>
+              <Link to='/contact'>
                 <a href="#" className={`a ${(pagenum===6)? "selected" : ""}`}>Contact</a>
+              </Link>
             </li>
       </ul>
         <Link to={localStorage.getItem("access_token") ? '/dashboard' : '/login'} className="login-btn">
