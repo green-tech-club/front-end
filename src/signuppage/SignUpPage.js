@@ -7,6 +7,7 @@ import "./SignUpPage.css";
 import TextP from "../stylingComponents/Texts/Paragraph";
 import countryCodes from './countryCodes.json';
 import backendAddress from "../backend-address.json";
+import CountryFlag from 'react-country-flag';
 
 const lookup = require('country-code-lookup');
 
@@ -119,6 +120,18 @@ function SignUpPage() {
                         <img id="return-btn" src={return_btn}/>
                     </Link>
                     <div className="presignup-welcome-section" id="sign-up-welcome-section">
+                        <div style={{marginLeft: "90%",  position: "relative", transform: "translateY(100%)"}}>
+                            {countryCodeISO && (
+                            <CountryFlag
+                                countryCode={countryCodeISO}
+                                svg
+                                style={{
+                                width: '48px',
+                                height: '48px',
+                                }}
+                            />
+                            )}
+                        </div>
                         <h1 id="welcome-text">Welcome back!</h1>
                         <h3 id="subwelcome-text" >Please enter your details</h3>
                         <div className='line'></div>
@@ -179,9 +192,7 @@ function SignUpPage() {
                                 <p className="remember-me-text">Already have an account?</p> <p className="forgot-pass">Login</p>
                             </div>
                             
-                        <div>
-                        <TextP fontsize="10pt" name={`Country : ${countryName}`}></TextP>
-                        </div>
+                        
                         
                         </div>
                     </form>
