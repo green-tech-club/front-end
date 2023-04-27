@@ -105,12 +105,7 @@ function DonatePage() {
         .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
       setTelephone(formattedPhoneNumber);
     };
-    
-    const handleView = (event) => {
-      if(paymentStep==3){
-        
-      }
-    }
+   
 
 return (
 <motion.div
@@ -143,7 +138,7 @@ return (
             transition={{ duration: 0.5 }}
             variants={boxVariants}
             />
-            {paymentStep === 2 ? null : <h3 className="donate-subtext">Please enter your details:</h3>} 
+            {paymentStep ==2 ? <h3 id="text-above" className="donate-subtext" style={{opacity: "0"}}>Please enter your details:</h3> : <h3 id="text-above" className="donate-subtext">Please enter your details:</h3>}
           </div>
           <div>
             <form id="donate-actual-form">
