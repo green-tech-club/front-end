@@ -27,7 +27,7 @@ function DonatePage() {
     let [paymentStep, setPaymentStep] = useState(0);
     const [paymentAmount, setPaymentAmount] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('');
-    const widths = ['10%' , '130%' , '260%']
+    const widths = ['10%' , '130%' , '240%']
     const [widthsIndex , setWidth] = useState(0);
     const boxVariants = {
       expanded: { width: widths[widthsIndex] },
@@ -105,7 +105,13 @@ function DonatePage() {
         .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
       setTelephone(formattedPhoneNumber);
     };
+    
+    const handleView = (event) => {
+      if(paymentStep==3){
         
+      }
+    }
+
 return (
 <motion.div
   initial={{ opacity: 0 , x:20}}
@@ -137,7 +143,7 @@ return (
             transition={{ duration: 0.5 }}
             variants={boxVariants}
             />
-            <h3 className="donate-subtext">Please enter your details:</h3>
+            {paymentStep === 2 ? null : <h3 className="donate-subtext">Please enter your details:</h3>} 
           </div>
           <div>
             <form id="donate-actual-form">
@@ -179,16 +185,13 @@ return (
                 </div>
               )}
               {paymentStep === 2 && (
-                <div>
-                  <label>
-                    <input className="donate-input" style={{textAlign: 'center'}} type="text" value={cardNumber} onChange={handleCreditCardNumberChange} required placeholder='Credt Card Number' /> 
-                  </label>
-
-                  <label>
-                    <input className="donate-input" style={{width: '45%',textAlign: 'center'}} type="text" value={cvv} onKeyPress={handledigitInput} onChange={(e) => setCvv(e.target.value)} required placeholder='CVV' />
-                    <input className="donate-input" style={{width: '45%',marginLeft: '10%',textAlign: 'center'}} type="text" value={expiration} onChange={handleExpiryDateChange} required placeholder='XX/XX' />
-                  </label>
-                  <button type="button" className="donate-btn"  onClick={handleNextClick}>Finish</button> 
+                <div style={{textAlign: "center", marginBottom: "25%"}}>
+                        <h1>Payment Successful!</h1>
+                       <span className="checkmark">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12.5l3.5 3.5L18 7" fill="none" stroke="#00C853" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                         </svg>
+                      </span>
                 </div>
               )}
               {paymentStep === 3 &&(

@@ -234,3 +234,25 @@
     background-color: #fff;
     animation: checkmark-animation 0.5s;
   }
+
+  @keyframes checkmark {
+    0% {
+      stroke-dashoffset: 24;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+.checkmark {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+.checkmark path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: checkmark 0.5s ease-in-out forwards;
+}
