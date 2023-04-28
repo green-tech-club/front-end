@@ -17,13 +17,15 @@ import SignUpPage from "./signuppage/SignUpPage";
 import ParisA from  "./parisagreement/parisagreement";
 import PreSignUp from './signuppage/PreSignUp';
 import ContactPage from './contactpage/ContactPage';
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
 
     element: (
-      
+
         <App/>
     ),
   },
@@ -67,7 +69,10 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router} />
+    <div>
+      <RouterProvider router={router} />
+      <ToastContainer/>
+    </div>
 );
 
 // If you want to start measuring performance in your app, pass a function

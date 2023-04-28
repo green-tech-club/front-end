@@ -4,6 +4,7 @@ import "./LoginPage.css";
 import return_btn from './return.png';
 import {Link, useNavigate} from "react-router-dom";
 import backendAddress from "../backend-address.json";
+import {toast, ToastContainer} from "react-toastify";
 
 function LoginPage() {
     const [formData, setFormData] = React.useState({
@@ -71,7 +72,15 @@ function LoginPage() {
             .then(data => {
                 if(data.detail !== undefined)
                 {
-                    alert(data.detail)
+                    toast.error(data.detail, {
+                        position: "top-center",
+                        autoClose: 2500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    })
                     return
                 }
                 loginSuccess(data)
@@ -90,6 +99,15 @@ function LoginPage() {
             localStorage.removeItem("email")
         }
         localStorage.setItem("access_token", data.access_token)
+        toast.success("Welcome Back!", {
+            position: "top-center",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
         navigate('/dashboard')
     }
 
@@ -155,6 +173,7 @@ function LoginPage() {
                     </form>
                 </div>
             </div>
+            <ToastContainer/>
         </motion.div>
     );
 }
