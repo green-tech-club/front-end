@@ -9,6 +9,7 @@ import { getAnalytics } from "firebase/analytics";
 // I will provide the firebase-config.json file on ClickUp
 import firebaseConfig from '../../firebase-config.json';
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -104,7 +105,7 @@ function FormSubmittingPage(){
         setTimeout(() => {
             setLine2Text(formData.file.name)
             line2.current.style.opacity = '1'
-            line2.current.style.scale = '2'
+            line2.current.style.scale = '1.5'
         },150)
     }
 
@@ -180,6 +181,15 @@ function FormSubmittingPage(){
     }
 
     function submitSuccess(data){
+        toast.success("Report Submitted", {
+            position: "top-center",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
         window.location.reload()
         console.log(data)
     }
@@ -201,6 +211,28 @@ function FormSubmittingPage(){
                         value={formData.title}
                         className="input-login"
                         onChange={(e) => setFormData({...formData, title: e.target.value})}
+                    />
+                </div>
+                <div className="form-field" id="title-field">
+                    <label htmlFor="description" id="label-title">Description</label>
+                    <input
+                        id="description"
+                        name="description"
+                        placeholder="Optional"
+
+                        className="input-login"
+
+                    />
+                </div>
+                <div className="form-field" id="title-field">
+                    <label htmlFor="on-behalf-of" id="label-title">On Behalf Of</label>
+                    <input
+                        id="on-behalf-of"
+                        name="on-behalf-of"
+                        placeholder="Optional"
+                        value={formData.title}
+                        className="input-login"
+
                     />
                 </div>
                 <div className="form-field">
