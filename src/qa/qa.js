@@ -114,7 +114,7 @@ function QAPage(){
             </div>
             <div className='QuestionsRow'>
             <div className='Question'>
-                    <h1 className='QuestionTitle'>Do you have a question?</h1>
+                    <h1 className='QuestionTitleQ'>Do you have a question?</h1>
                     <div className='line'></div>
                     <p className='QuestionText'>Feel free to ask us anything. We will answer you in a short amount of time</p>
                     <button  className='green-btn'style={butStyle} onClick={() => setShowPopup(true)}><h className='green-btn-text-small'>Ask a Question</h></button>

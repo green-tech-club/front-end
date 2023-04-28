@@ -8,6 +8,8 @@ import TextTitle from '../stylingComponents/Texts/Title';
 import TextP from '../stylingComponents/Texts/Paragraph';
 import HorDiv from '../stylingComponents/divs/EasyDivs';
 import Footer from '../homepage/footer/footer';
+import GreenButton from '../stylingComponents/buttons/greenButton';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,7 +29,7 @@ function DonatePage() {
     let [paymentStep, setPaymentStep] = useState(0);
     const [paymentAmount, setPaymentAmount] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('');
-    const widths = ['10%' , '130%' , '240%']
+    const widths = ['33%' , '66%' , '100%']
     const [widthsIndex , setWidth] = useState(0);
     const boxVariants = {
       expanded: { width: widths[widthsIndex] },
@@ -115,37 +117,40 @@ return (
   <div className='PaymentForm'>
   <img src={back} className="backimgfordonate" />
   <div id="donate-page-container">
-    <div className='horidiv'>
       <div className='donate-content'>
-        <TextTitle name='Donate now' colour='white' />
-        <TextP name='Asalamu alaykom wa alaykum salam' colour='white' />
+        <TextTitle name='Donate now' colour='black' />
+        <div className='line'></div>
+        <TextP name='Asalamu alaykom wa alaykum salam' colour='black' />
         <div className='donate-desc'>
-          <TextP name='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br><br>
-            1- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
-            2- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
-            3- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
-            4- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>'
-            colour='white'
-            fontsize='12pt'
+          <TextP name='Thank you for choosing to donate to our cause. Your generosity will help us fight climate change and protect our planet. To complete your donation, please follow these four simple steps:<br><br>
+            1- Choose the amount you want to donate. You can select one of the preset options or enter a custom amount.<br><br>
+            2- Fill in your personal and payment details. We accept credit cards, debit cards, and PayPal. Your information is secure and will not be shared with anyone.<br><br>
+            3- Review your donation and confirm it. You will see a summary of your donation and the impact it will have. You can also choose to make your donation recurring or one-time.<br><br>
+            4- Receive your confirmation and receipt. You will get an email with your donation confirmation and receipt. You can also download it from our website.'
+            colour='black'
+            fontsize='14pt'
           />
         </div>
       </div> 
       <div id="donate-container">
         <div id="donate-form">
           <div className="donate-section">
+            <TextTitle name='Donate' colour='black' fontsize='24pt'></TextTitle>
+            <TextTitle name={`Step ${widthsIndex+1} / 3`} colour="#00B088" fontsize='14pt'></TextTitle>
             <motion.div className="donate-line" style={{width: widths[widthsIndex]}} 
             animate={widths === "100px" ? "collapsed" : "expanded"}
             transition={{ duration: 0.5 }}
             variants={boxVariants}
             />
-            {paymentStep ==2 ? <h3 id="text-above" className="donate-subtext" style={{opacity: "0"}}>Please enter your details:</h3> : <h3 id="text-above" className="donate-subtext">Please enter your details:</h3>}
+            {paymentStep ==2 ? <h3 id="text-above" className="donate-subtext" style={{opacity: "0"}}>Please enter your details:</h3> : <h3 id="text-above" className="donate-subtext">Please enter the amount you want to donate:</h3>}
           </div>
           <div>
             <form id="donate-actual-form">
               {paymentStep === 0 && (
                 <div  style={{ textAlign: "center" }}>
                   <label>
-                    <input className="donate-input" type="text" onKeyPress={handledigitInput} value={paymentAmount} onChange={handlePaymentAmountChange} placeholder='Amount you want to donate' />
+                    <TextP name='Amount to donate' fontsize='14pt'></TextP>
+                    <input  className="donate-input-usd" type="text" onKeyPress={handledigitInput} value={paymentAmount} onChange={handlePaymentAmountChange} placeholder='Please enter a number (USD)' />
                   </label>
                   <button type="button" className="donate-btn"  onClick={handleNextClick}>Next</button> 
                 </div>
@@ -159,11 +164,11 @@ return (
                   </label>
                   
                   <label>
-                    <input className="donate-input" type="text" value={address} onChange={(e) => setAddress(e.target.value)} required placeholder='address' />
+                    <input className="donate-input" type="text" value={address} onChange={(e) => setAddress(e.target.value)} required placeholder='Address' />
                   </label>
                   
                   <label>
-                    <input className="donate-input" type="text" value={telephone} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onKeyPress={handledigitInput} onChange={handleTelephone} required placeholder='telephone' list="country-codes"/>
+                    <input className="donate-input" type="text" value={telephone} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onKeyPress={handledigitInput} onChange={handleTelephone} required placeholder='Phone Number' list="country-codes"/>
                   <datalist id="country-codes">
                     <option value="+1">USA (+1)</option>
                     <option value="+44">UK (+44)</option>
@@ -181,12 +186,15 @@ return (
               )}
               {paymentStep === 2 && (
                 <div style={{textAlign: "center", marginBottom: "25%"}}>
-                        <h1>Payment Successful!</h1>
-                       <span className="checkmark">
+                  <span className="checkmark">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 12.5l3.5 3.5L18 7" fill="none" stroke="#00C853" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                          </svg>
                       </span>
+                    <TextTitle name='Payment Successful!' fontsize='24pt' colour='black'></TextTitle>
+                    <Link to="/">
+                    <button type="button" className="donate-btn" >Home Page</button>
+                    </Link>
                 </div>
               )}
               {paymentStep === 3 &&(
@@ -198,7 +206,6 @@ return (
             </form> 
           </div>
         </div>
-      </div>
     </div>
   </div>
   </div>
