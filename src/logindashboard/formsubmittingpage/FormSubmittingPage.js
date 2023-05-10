@@ -19,7 +19,7 @@ const storageRef = ref(storage, 'reports');
 
 function FormSubmittingPage(){
     const [fileUploaded, setFileUploaded] = useState(false)
-    const [formData, setFormData] = useState({title: '', file: null, country: ''})
+    const [formData, setFormData] = useState({title: '', file: null, country: '', onBehalfOf: '', submitter: ''})
     const [submitting, setSubmitting] = useState(false)
     const removeBtn = useRef(null)
     const uploadBtn = useRef(null)
@@ -202,7 +202,7 @@ function FormSubmittingPage(){
         >
             <form id='form-form' onSubmit={handleFormSubmit}>
                 <h1>Upload Document</h1>
-                <div className="form-field" id="title-field">
+                <div className="text-field" id="title-field">
                     <label htmlFor="title" id="label-title">Title</label>
                     <input
                         id="title"
@@ -213,27 +213,35 @@ function FormSubmittingPage(){
                         onChange={(e) => setFormData({...formData, title: e.target.value})}
                     />
                 </div>
-                <div className="form-field" id="title-field">
-                    <label htmlFor="description" id="label-title">Description</label>
-                    <input
-                        id="description"
-                        name="description"
-                        placeholder="Optional"
-
-                        className="input-login"
-
-                    />
+                <div className="text-field" id="mandate--field">
+                    <label htmlFor="mandate" id="mandate-title">Mandate</label>
+                    <p id="mandate" name="mandate">
+                        Decision 19/CMA.1, paragraph 19: requested the Chairs of the Subsidiary Body for Scientific and Technological Advice and the Subsidiary Body far implementation to issue a call for the inputs referred to in paragraphs 36 and 37 of the same decision, taking into account that such inputs should be submitted at least three months before their consideration in the technical assessment;
+                    </p>
                 </div>
-                <div className="form-field" id="title-field">
-                    <label htmlFor="on-behalf-of" id="label-title">On Behalf Of</label>
-                    <input
-                        id="on-behalf-of"
-                        name="on-behalf-of"
-                        placeholder="Optional"
-                        value={formData.title}
-                        className="input-login"
-
-                    />
+                <div id="additional-info">
+                    <div className="text-field" id="submitter-field">
+                        <label htmlFor="submitter" id="label-submitter">Submitter</label>
+                        <input
+                            id="submitter"
+                            name="submitter"
+                            placeholder="Optional"
+                            value={formData.submitter}
+                            className="input-login"
+                            onChange={(e) => setFormData({...formData, submitter: e.target.value})}
+                        />
+                    </div>
+                    <div className="text-field" id="on-behalf-of-field">
+                        <label htmlFor="on-behalf-of" id="label-on-behalf-of">On Behalf Of</label>
+                        <input
+                            id="on-behalf-of"
+                            name="on-behalf-of"
+                            placeholder="Optional"
+                            value={formData.onBehalfOf}
+                            className="input-login"
+                            onChange={(e) => setFormData({...formData, onBehalfOf: e.target.value})}
+                        />
+                </div>
                 </div>
                 <div className="form-field">
                     <h2>Document</h2>
