@@ -34,7 +34,14 @@ const router = createBrowserRouter([
     element: <QAPage/>,
   },
   {
-    path: "dashboard",
+    path: "dashboard/home",
+    element: <WholeDashboard/>,
+  },
+  {
+    path: "dashboard/submit-form",
+    element: <WholeDashboard/>,
+  },{
+    path: "dashboard/setting",
     element: <WholeDashboard/>,
   },
   {

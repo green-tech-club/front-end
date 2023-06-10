@@ -108,7 +108,7 @@ function LoginPage() {
             draggable: true,
             progress: undefined,
         })
-        navigate('/dashboard')
+        navigate('/dashboard/home')
     }
 
     return (

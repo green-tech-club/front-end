@@ -6,27 +6,18 @@ import GreenButton from '../../stylingComponents/buttons/greenButton';
 import '../../homepage/navbar/navbar.css'
 import TextP from '../../stylingComponents/Texts/Paragraph';
 import Flag from './flag';
+import {useForceUpdate} from "framer-motion";
 
 const username = "Hungary"
 
-const SidebarTwo = (props) => {
+const SidebarTwo = () => {
 
-    const currentButton = useRef(null)
-    const navigate = useNavigate()
-    let pageid = "Dashboard";
-    useEffect(() => {
-        currentButton.current = document.getElementById('init-li');
-    }, []);
 
-    const handleButtonClick = (e) => {
-        currentButton.current = e.target
-        const button = e.target
-        props.newPage(button.innerText)
-        pageid = button.innerText;
-    }
+    var pageid = window.location.pathname.split('/')[2];
 
 
     return (
+
         <div className="sidebar">
             <div className="user-info">
                 <TextP name='Dashboard'></TextP>
@@ -39,17 +30,23 @@ const SidebarTwo = (props) => {
             </div>
             <ul className='side-element'>
                 <div id='side-bar-li-back'/>
-                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Dashboard")? "selected" : ""}`} id="init-li">
-                    <a href="#" className={`side-element-a ${(pageid==="Dashboard")? "selected" : ""}`}>Dashboard</a>
+                <Link to="/dashboard/home">
+                <li className={`side-element-li ${(pageid==="home")? "selected" : ""}`} >
+                    <a href="#" className={`side-element-a`}>Dashboard</a>
                 </li>
-                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Form")? "selected" : ""}`} id="init-li">
-                    <a  href="#" className={`side-element-a ${(pageid==="Form")? "selected" : ""}`}>Form</a>
+                </Link>
+                <Link to="/dashboard/submit-form">
+                <li className={`side-element-li ${(pageid==="submit-form")? "selected" : ""}`} >
+                    <a  href="#" className={`side-element-a`}>Form</a>
                 </li>
-                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Settings")? "selected" : ""}`} id="init-li">
-                    <a  href="#" className={`side-element-a ${(pageid==="Settings")? "selected" : ""}`}>Settings</a>
+                </Link>
+                <Link to="/dashboard/setting">
+                <li className={`side-element-li ${(pageid==="setting")? "selected" : ""}`} >
+                    <a  href="#" className={`side-element-a`}>Settings</a>
                 </li>
-                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Settings")? "selected" : ""}`} id="init-li">
-                    <a  href="#" className={`side-element-a ${(pageid==="Settings")? "selected" : ""}`}>Settings</a>
+                </Link>
+                <li className={`side-element-li ${(pageid==="Settings")? "selected" : ""}`}>
+                    <a  href="#" className={`side-element-a`}>Settings</a>
                 </li>
             </ul>
             <div className='logout-btn'>

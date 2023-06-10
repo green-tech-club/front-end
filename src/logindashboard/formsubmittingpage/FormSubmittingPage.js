@@ -50,7 +50,7 @@ function FormSubmittingPage(){
             uploadBtn.current.style.backgroundColor = '#b0b0b0'
             setTimeout(() => {
                 removeBtn.current.style.display = 'none'
-            }, 500);
+            }, 1);
             displayTips()
         }
     }, [fileUploaded])
