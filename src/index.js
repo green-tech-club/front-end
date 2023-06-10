@@ -19,6 +19,7 @@ import PreSignUp from './signuppage/PreSignUp';
 import ContactPage from './contactpage/ContactPage';
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import StatisticsPage from './statistticspage/statistics';
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <ContactPage/>,
+  },
+  {
+    path:"stats",
+    element: <StatisticsPage/>,
   }
 ]);
 
