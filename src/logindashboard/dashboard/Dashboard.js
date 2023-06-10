@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../sidebar/Sidebar';
 import ChartComponent from '../chart/chart';
 import { motion } from "framer-motion"
+import sidebar from "../sidebar/Sidebar";
+import SidebarTwo from "../sidebar/sidebartwo";
 
 
 function Dashboard() {
@@ -40,16 +42,17 @@ function Dashboard() {
     }
   };
 
+
   return (
     <motion.div className="DashboardMain"
     initial={{ opacity: 0}}
     animate={{ opacity: 1}}
     transition={{ ease: "easeOut", duration: 0.5 }}>
-
       <div className="maincontent">
         <h1>Dashboard</h1>
         <ChartComponent className="chart" type="line" data={chartData} options={chartOptions} />
       </div>
+      <SidebarTwo/>
     </motion.div>
     
   );
