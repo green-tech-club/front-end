@@ -159,7 +159,6 @@ function Dashboard() {
           />
         </div>
         <div>
-            <h1>Progress Towards Targets</h1>
             <TargetVisual targets={targets} achievements={achievements} />
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './TargetVisual.css'
 
 const TargetVisual = ({ targets, achievements }) => {
   return (
