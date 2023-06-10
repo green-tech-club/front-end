@@ -39,10 +39,18 @@ const SidebarTwo = (props) => {
             </div>
             <ul className='side-element'>
                 <div id='side-bar-li-back'/>
-                <li className={`side-element-li  ${(pageid==="Dashboard")? "selected" : ""}`} id="init-li">Dashboard</li>
-                <li className='side-element-li'>Form</li>
-                <li className='side-element-li'>Settings</li>
-                <li className='side-element-li'>Settings</li>
+                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Dashboard")? "selected" : ""}`} id="init-li">
+                    <a href="#" className={`side-element-a ${(pageid==="Dashboard")? "selected" : ""}`}>Dashboard</a>
+                </li>
+                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Form")? "selected" : ""}`} id="init-li">
+                    <a  href="#" className={`side-element-a ${(pageid==="Form")? "selected" : ""}`}>Form</a>
+                </li>
+                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Settings")? "selected" : ""}`} id="init-li">
+                    <a  href="#" className={`side-element-a ${(pageid==="Settings")? "selected" : ""}`}>Settings</a>
+                </li>
+                <li onClick={handleButtonClick} className={`side-element-li ${(pageid==="Settings")? "selected" : ""}`} id="init-li">
+                    <a  href="#" className={`side-element-a ${(pageid==="Settings")? "selected" : ""}`}>Settings</a>
+                </li>
             </ul>
             <div className='logout-btn'>
                 <Link to='/login' className="login-btn">
