@@ -1,6 +1,6 @@
 import React from 'react';
 import './WholeDashboard.css';
-import Sidebar from './sidebar/Sidebar';
+import SidebarTwo from './sidebar/sidebartwo';
 import Dashboard from './dashboard/Dashboard';
 import FormSubmittingPage from "./formsubmittingpage/FormSubmittingPage";
 
@@ -13,7 +13,7 @@ function WholeDashboard() {
 
     return (
         <div id="whole-dashboard">
-            <Sidebar newPage={setNewPage}/>
+            <SidebarTwo newPage={setNewPage}/>
             {
                 page === "Dashboard" ? <Dashboard /> : null
             }

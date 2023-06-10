@@ -16,7 +16,7 @@ a{
   .user-info {
     display: flex;
     flex-direction: column;
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-top: 3rem;
     margin-bottom: 5vh;
   }
@@ -25,8 +25,8 @@ a{
     font-size: 18pt;
     margin-top: 2rem;
     font-family: 'Outfit', sans-serif;
-    font-weight: bold;
-    color: #828282;
+    font-weight: normal;
+    color: #000;
   }
   
 .side-element {
@@ -47,17 +47,6 @@ a{
     position: relative;
   }
 
-#side-bar-li-back {
-    z-index: 1;
-    background-color: #00B088;
-    border-radius: 3px;
-    position: absolute;
-    width: 80%;
-    height: 5vh;
-    left: 0%;
-    top: 0;
-    transition: all 0.3s cubic-bezier(0.6, 0.4, 0, 1) 0.03s;
-}
 .logout-btn{
   position: absolute;
   margin-left: 1vw;
@@ -73,4 +62,33 @@ a{
   flex-direction: row;
   justify-content: left;
   align-items: center;
+}
+.side-element-li.selected::after{
+    position: absolute;
+    opacity: 1;
+    height: 60%;
+    top: 2%;
+    bottom: 2%;
+}
+
+.side-element-li::after {
+    content: "";
+    position: absolute;
+    left: -20px; /* adjust this value to control the position of the shape */
+    align-content: center;
+    top: 15%;
+    bottom: 15%;
+    width: 10px;
+    height: 30%;
+    border-radius: 5px;
+    background-color: #00B088;
+    opacity: 0;
+    transform: opacity 0; /* initially set the scale to 0 to hide the shape */
+    transition: opacity 0.3s ease-in-out; /* add transition to animate the shape */
+}
+.side-element-li:hover::after {
+    opacity: 1; /* set the scale to 1 on hover to show the shape */
+}
+.side-element-a {
+    color: black;
 }
