@@ -11,7 +11,7 @@ function Dashboard() {
   function handleLogout() {
     sessionStorage.removeItem('access_token');
     sessionStorage.removeItem('private_key');
-    navigate('/login');
+    navigate('/login' );
   }
 
   const chartData = {
