@@ -12,6 +12,7 @@ function Navbar() {
   if(pagePath==="/donate") pagenum=5;
   if(pagePath==="/paris-agreement") pagenum=1;
   if(pagePath==="/contact") pagenum=6;
+  if(pagePath==="/statistics") pagenum=2;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +47,9 @@ function Navbar() {
               </Link>
             </li>
             <li className={`li ${(pagenum===2)? "selected" : ""}`}>
+              <Link to='/statistics'>
                 <a href="#" className={`a ${(pagenum===2)? "selected" : ""}`}>Statistics</a>
+                </Link>
             </li>
             <li className={`li ${(pagenum===3)? "selected" : ""}`}>
                 <a href="#" className={`a ${(pagenum===3)? "selected" : ""}`}>Financial Flow</a>

@@ -16,6 +16,7 @@ import DonatePage from './donatepage/donate';
 import SignUpPage from "./signuppage/SignUpPage";
 import ParisA from  "./parisagreement/parisagreement";
 import PreSignUp from './signuppage/PreSignUp';
+import StatisticsPage from './statistticspage/statistics';
 import ContactPage from './contactpage/ContactPage';
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <ContactPage/>,
+  },
+  {
+    path:"statistics",
+    element : <StatisticsPage/>,
   }
 ]);
 
