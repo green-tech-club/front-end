@@ -38,18 +38,18 @@ function ContactPage () {
                     <div className='line'></div>
                     <p className="contactText">
                         Person 1 (Hungary office): <br></br><br></br>
-                        Email: <a href = "mailto: person1@example.com">person1@example.com</a> <br></br>
+                        Email: <a className="linkstyle" href = "mailto: person1@example.com">person1@example.com</a> <br></br>
                         Fax Number: 123456789 <br></br>
-                        Phone Number: <a href = "tel: +36 123 456 78">+36 123 456 78</a> <br></br>
-                        Phone Number (Whatsapp): <a href = "tel: +36 212 121 34">+36 212 121 34</a>
+                        Phone Number: <a className="linkstyle" href = "tel: +36 123 456 78">+36 123 456 78</a> <br></br>
+                        Phone Number (Whatsapp): <a className="linkstyle" href = "tel: +36 212 121 34">+36 212 121 34</a>
                         <div className="empty-margin-top"></div>
                     </p>
                     <p className="contactText">
                         Person 2 (Austria office): <br></br><br></br>
-                        Email: <a href = "mailto: person2@example.com">person2@example.com</a> <br></br>
+                        Email: <a className="linkstyle" href = "mailto: person2@example.com">person2@example.com</a> <br></br>
                         Fax Number: 123456789 <br></br>
-                        Phone Number: <a href = "tel: +43 123 456 78">+43 123 456 78</a> <br></br>
-                        Phone Number (Whatsapp): <a href = "tel: +43 212 121 34">+43 212 121 34</a>
+                        Phone Number: <a className="linkstyle" href = "tel: +43 123 456 78">+43 123 456 78</a> <br></br>
+                        Phone Number (Whatsapp): <a className="linkstyle" href = "tel: +43 212 121 34">+43 212 121 34</a>
                         <div className="empty-margin-top"></div>
                     </p>
                 </div>
@@ -58,18 +58,18 @@ function ContactPage () {
                     <div className='line'></div>
                     <p className="contactText">
                         Specialist 1 (speciality): <br></br><br></br>
-                        Email: <a href = "mailto: specialist1@example.com">specialist1@example.com</a> <br></br>
+                        Email: <a className="linkstyle" href = "mailto: specialist1@example.com">specialist1@example.com</a> <br></br>
                         Fax Number: 123456789 <br></br>
-                        Phone Number: <a href = "tel: +36 878 856 78">+36 878 856 78</a> <br></br>
-                        Phone Number (Whatsapp): <a href = "tel: +36 888 777 34">+36 888 777 34</a>
+                        Phone Number: <a className="linkstyle" href = "tel: +36 878 856 78">+36 878 856 78</a> <br></br>
+                        Phone Number (Whatsapp): <a className="linkstyle" href = "tel: +36 888 777 34">+36 888 777 34</a>
                         <div className="empty-margin-top"></div>
                     </p>
                     <p className="contactText">
                         Specialist 2 (speciality): <br></br><br></br>
-                        Email: <a href = "mailto: specialist2@example.com">specialist2@example.com</a> <br></br>
+                        Email: <a className="linkstyle" href = "mailto: specialist2@example.com">specialist2@example.com</a> <br></br>
                         Fax Number: 123456789 <br></br>
-                        Phone Number: <a href = "tel: +36 404 404 44">+36 404 404 44</a> <br></br>
-                        Phone Number (Whatsapp): <a href = "tel: +36 404 404 44">+36 404 404 44</a>
+                        Phone Number: <a className="linkstyle" href = "tel: +36 404 404 44">+36 404 404 44</a> <br></br>
+                        Phone Number (Whatsapp): <a className="linkstyle" href = "tel: +36 404 404 44">+36 404 404 44</a>
                         <div className="empty-margin-top"></div>
                     </p>
                 </div>
@@ -79,10 +79,12 @@ function ContactPage () {
                     <h className="contactTitle">Greentech social media accounts</h>
                     <div className="line"></div>
                     <p className="contactText"> <br></br>
-                        Facebook: <a href = "www.facebook.com" target="_blank">Greentech Team</a> <br></br>
-                        Twitter: <a href = "www.twitter.com" target="_blank">Greentech.Team</a> <br></br>
-                        Email: <a href = "mailto: greentech@example.com">Greentech@example.com</a>
+                        Facebook: <a className="linkstyle" href = "https://www.facebook.com/people/GreenTech-Unideb/100087248554997/" target="_blank">GreenTech Unideb</a> <br></br>
+                        Instagram <a className="linkstyle" href = "https://instagram.com/greentech_unideb?igshid=MzRlODBiNWFlZA==" target="_blank">greentech_unideb</a> <br></br>
+                        Email: <a className="linkstyle" href = "mailto: greentechunideb@gmail.com">greentechunideb@gmail.com</a>
                     </p>
+                    <br></br>
+                    <p className="contactText">Check out our portfolio! : <a className="linkstyle" href = "https://greentechunideb.my.canva.site/home" target="_blank">Greentech</a> </p>
                 </div>
             </div>
             <div className="empty-margin-top"></div>
@@ -92,6 +94,9 @@ function ContactPage () {
                     <p className="contactText">We care about your input</p>
                 </div>
             </div>
+
+
+
         </div>
         <div className='empty-margin-top'></div>
         <Footer></Footer>

@@ -63,6 +63,7 @@ a{
   justify-content: left;
   align-items: center;
 }
+
 .side-element-li.selected::after{
     position: absolute;
     opacity: 1;

@@ -7,6 +7,8 @@ import SubmissionTable from './SubmissionTable/SubmissionTable';
 import {Component, useState, useEffect} from 'react';
 import Calendar from 'react-calendar';
 import TargetVisual from './TargetVisual/TargetVisual';
+import sidebar from "../sidebar/Sidebar";
+import SidebarTwo from "../sidebar/sidebartwo";
 
 
 
@@ -115,7 +117,6 @@ function Dashboard() {
     initial={{ opacity: 0}}
     animate={{ opacity: 1}}
     transition={{ ease: "easeOut", duration: 0.5 }}>
-
       <div className="maincontent">
           <h1>Dashboard</h1>
           <div className="countdown">
@@ -162,6 +163,7 @@ function Dashboard() {
             <TargetVisual targets={targets} achievements={achievements} />
         </div>
       </div>
+      <SidebarTwo/>
     </motion.div>
     
   );
