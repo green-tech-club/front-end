@@ -12,7 +12,6 @@ function Navbar() {
   if(pagePath==="/donate") pagenum=5;
   if(pagePath==="/paris-agreement") pagenum=1;
   if(pagePath==="/contact") pagenum=6;
-  //console.log(pagenum)
 
   useEffect(() => {
     const handleScroll = () => {

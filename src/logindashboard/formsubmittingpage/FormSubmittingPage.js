@@ -10,6 +10,7 @@ import { getAnalytics } from "firebase/analytics";
 import firebaseConfig from '../../firebase-config.json';
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import TextTitle from "../../stylingComponents/Texts/Title";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -201,7 +202,7 @@ function FormSubmittingPage(){
             transition={{ ease: "easeOut", duration: 0.5 }}
         >
             <form id='form-form' onSubmit={handleFormSubmit}>
-                <h1>Upload Document</h1>
+                <TextTitle name="Upload Document" colour="black"></TextTitle>
                 <div className="text-field" id="title-field">
                     <label htmlFor="title" id="label-title">Title</label>
                     <input
