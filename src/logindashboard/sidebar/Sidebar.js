@@ -7,7 +7,7 @@ import '../../homepage/navbar/navbar.css'
 import TextP from '../../stylingComponents/Texts/Paragraph';
 import Flag from './flag';
 
-const username = "Hungary "
+const username = "Hungary"
 const Sidebar = (props) => {
     const [backgroundPosition, setBackgroundPosition] = useState({ left: '-20%', top: '-3%', width: '10%', height: '20%' })
     const currentButton = useRef(null)
