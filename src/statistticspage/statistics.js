@@ -60,19 +60,22 @@ return (
     
    
       
-        <ComposableMap
-          style={{ margin: "auto" }}
-          projection="geoMercator"
-          projectionConfig={{
-            scale: 80,
-          }}
-        >
-          
+    <ComposableMap
+        style={{ margin: 'auto' }}
+        projection='geoMercator'
+        projectionConfig={{
+          scale: 80,
+        }}
+      >
         <ZoomableGroup center={[0, 0]} zoom={1}>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => (
-                <Geography key={geo.rsmKey} geography={geo} />
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  style={{ fill: 'red', strokeWidth: 1, stroke: 'black' }}
+                />
               ))
             }
           </Geographies>
