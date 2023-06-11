@@ -48,11 +48,14 @@ function LoginPage() {
     function handleSubmit(event) {
         event.preventDefault()
 
+        console.log('handleSubmit called');
+
         const tempForm = new URLSearchParams();
         tempForm.append('username', formData.username);
         tempForm.append('password', formData.password);
         tempForm.append('grant_type', 'password');
 
+        console.log('Form data prepared');
 
         const requestOptions = {
             method: 'POST',
@@ -61,15 +64,23 @@ function LoginPage() {
             body: tempForm
         };
 
+        console.log('Request options prepared');
+
         function sleep(ms){
             for(let t = Date.now(); Date.now() - t <= ms;);
         }
 
         let url = backendAddress.hostname+"/auth/login"
 
+        console.log('About to fetch', url);
+        
         fetch(url, requestOptions)
-            .then(res => res.json())
+            .then(res => {
+                console.log('Got response:', res);
+                return res.json();
+            })
             .then(data => {
+                console.log('Got data:', data);
                 if(data.detail !== undefined)
                 {
                     toast.error(data.detail, {
@@ -80,15 +91,16 @@ function LoginPage() {
                         pauseOnHover: true,
                         draggable: true,
                         progress: undefined,
-                    })
+                        })
                     return
                 }
                 loginSuccess(data)
             })
             .catch(error => {
-                console.log(error)
+                console.log('Fetch error:', error);
             }
         )
+
     }
     function loginSuccess(data){
         //save email to local storage if remember me is checked
@@ -108,7 +120,7 @@ function LoginPage() {
             draggable: true,
             progress: undefined,
         })
-        navigate('/dashboard')
+        navigate('/dashboard/home')
     }
 
     return (
