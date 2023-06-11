@@ -20,6 +20,7 @@ import StatisticsPage from './statistticspage/statistics';
 import ContactPage from './contactpage/ContactPage';
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import StatisticsPage from './statistticspage/statistics';
 
 const router = createBrowserRouter([
   {
@@ -74,8 +75,13 @@ const router = createBrowserRouter([
     element: <ContactPage/>,
   },
   {
+<<<<<<< HEAD
     path:"statistics",
     element : <StatisticsPage/>,
+=======
+    path:"stats",
+    element: <StatisticsPage/>,
+>>>>>>> 7de5e796c8322e7882c85c1758c6248bff86959a
   }
 ]);
 
