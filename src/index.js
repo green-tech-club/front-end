@@ -75,13 +75,8 @@ const router = createBrowserRouter([
     element: <ContactPage/>,
   },
   {
-<<<<<<< HEAD
-    path:"statistics",
-    element : <StatisticsPage/>,
-=======
     path:"stats",
     element: <StatisticsPage/>,
->>>>>>> 7de5e796c8322e7882c85c1758c6248bff86959a
   }
 ]);
 
