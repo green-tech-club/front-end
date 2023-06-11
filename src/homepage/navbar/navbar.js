@@ -48,15 +48,10 @@ function Navbar() {
             </li>
             
             <li className={`li ${(pagenum===2)? "selected" : ""}`}>
-<<<<<<< HEAD
-              <Link to='/statistics'>
-                <a href="#" className={`a ${(pagenum===2)? "selected" : ""}`}>Statistics</a>
-                </Link>
-=======
             <Link to="/stats">
                 <a href="#" className={`a ${(pagenum===2)? "selected" : ""}`}>Statistics</a>
             </Link>
->>>>>>> 7de5e796c8322e7882c85c1758c6248bff86959a
+
             </li>
 
             <li className={`li ${(pagenum===3)? "selected" : ""}`}>
